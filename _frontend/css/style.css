@@ -79,6 +79,56 @@ body {
 .nav-inp {
     width: 250px !important;
 }
+.second-part {
+    display: none;
+}
+.terms {
+    margin-left: 0 !important;
+    width: auto !important;
+}
+.submit-btn {
+    width: 100px;
+}
+.first-part {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.fullname-inp {
+    width: 303px !important;
+}
+.whole-input {
+    width: 303px !important;
+    margin: 0 auto !important; 
+    text-align: start;
+}
+.fullname-label {
+    width: 86px;
+}
+.email-label {
+    width:50px;
+}
+.number-label {
+    width: 100px;
+}
+.password-t-label {
+    width: 92px;
+}
+.submit-btn {
+    width: 303px !important;
+}
+label {
+    margin-right: 0 !important;
+}
+.social {
+    width: 50%;
+}
+.social-span {
+    font-size: 12px;
+}
+.soc-item {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 }
 @media (max-width: 360px) {
     .navbar {
@@ -108,6 +158,57 @@ body {
     .nav-inp {
         width: 250px !important;
     }
+    .second-part {
+    display: none;
+    }
+    .terms {
+        margin-left: 0 !important;
+        width: auto !important;
+    }
+    .submit-btn {
+        width: 100px;
+    }
+    .first-part {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .fullname-inp {
+        width: 303px !important;
+    }
+    .whole-input {
+        width: 303px !important;
+        margin: 0 auto !important;
+        text-align: start; 
+    }
+    .fullname-label {
+        width: 86px;
+    }
+    .email-label {
+        width:50px;
+    }
+    .number-label {
+        width: 100px;
+    }
+    .password-t-label {
+        width: 92px;
+    }
+    .submit-btn {
+        width: 303px !important;
+    }
+    label {
+        margin-right: 0 !important;
+    }
+    .social {
+        width: 50%;
+    }
+    .social-span {
+        font-size: 12px;
+    }
+    .soc-item {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
 }
 @media (min-width: 768px) and (max-width: 841px) {
     .navbar {
@@ -136,6 +237,56 @@ body {
     }
     .nav-inp {
         width: 250px !important;
+    }
+    .second-part {
+    display: none;
+    }
+    .terms {
+        margin-left: 0 !important;
+        width: auto !important;
+    }
+    .submit-btn {
+        width: 100px;
+    }
+    .first-part {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .fullname-inp {
+        width: 303px !important;
+    }
+    .whole-input {
+        width: 303px !important;
+        margin: 0 auto !important; 
+        text-align: start;
+    }
+    .fullname-label {
+        width: 86px;
+    }
+    .email-label {
+        width:50px;
+    }
+    .number-label {
+        width: 100px;
+    }
+    .password-t-label {
+        width: 92px;
+    }
+    .submit-btn {
+        width: 303px !important;
+    }
+    label {
+        margin-right: 0 !important;
+    }
+    .social {
+        width: 50%;
+    }
+    .social-span {
+        font-size: 12px;
+    }
+    .soc-item {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
 }
