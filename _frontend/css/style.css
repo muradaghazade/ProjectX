@@ -129,6 +129,34 @@ label {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+.first-list-part {
+    padding-left: 0 !important;
+    display: none;
+}
+.mehsul-tapildi {
+    width: 18rem;
+    margin: 0 auto;
+    padding: 0 !important;
+}
+#accordion {
+    width: 100% !important;
+}
+.list-row {
+    padding: 0 !important;
+    padding-top: 42px !important;
+}
+.card {
+    margin: 0 auto;
+}
+.list-path {
+    display: none !important;
+}
+.web-drop {
+    display: none;
+}
+.mobile-tabs {
+    display: flex !important;
+}
 }
 @media (max-width: 360px) {
     .navbar {
@@ -207,6 +235,34 @@ label {
     .soc-item {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+    .first-list-part {
+        padding-left: 0 !important;
+        display: none;
+    }
+    .mehsul-tapildi {
+        width: 18rem;
+        margin: 0 auto;
+        padding: 0 !important;
+    }
+    #accordion {
+        width: 100% !important;
+    }
+    .list-row {
+        padding: 0 !important;
+        padding-top: 42px !important;
+    }
+    .card {
+        margin: 0 auto;
+    }
+    .list-path {
+        display: none !important;
+    }
+    .web-drop {
+        display: none;
+    }
+    .mobile-tabs {
+        display: flex !important;
     }
     
 }
@@ -287,6 +343,34 @@ label {
     .soc-item {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+    .first-list-part {
+        padding-left: 0 !important;
+        display: none;
+    }
+    .mehsul-tapildi {
+        width: 18rem;
+        margin: 0 auto;
+        padding: 0 !important;
+    }
+    #accordion {
+        width: 100% !important;
+    }
+    .list-row {
+        padding: 0 !important;
+        padding-top: 42px !important;
+    }
+    .card {
+        margin: 0 auto;
+    }
+    .list-path {
+        display: none !important;
+    }
+    .web-drop {
+        display: none;
+    }
+    .mobile-tabs {
+        display: flex !important;
     }
 
 }
