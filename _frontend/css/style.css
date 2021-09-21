@@ -13,6 +13,9 @@ body {
     border-color: transparent;
 
 }
+#comment-part {
+    display: none;
+}
 .nav-tabs .nav-link:hover {
     border-color: white;
 }
