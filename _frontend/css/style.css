@@ -160,6 +160,16 @@ label {
 .mobile-tabs {
     display: flex !important;
 }
+.inner-payment {
+    display: block !important;
+}
+.message-payment {
+    width: 279px !important;
+}
+.payment-card {
+    width: auto !important;
+}
+
 }
 @media (max-width: 360px) {
     .navbar {
@@ -267,7 +277,16 @@ label {
     .mobile-tabs {
         display: flex !important;
     }
-    
+    .inner-payment {
+        display: block !important;
+    }
+    .message-payment {
+        width: 279px !important;
+    }
+    .payment-card {
+        width: auto !important;
+    }
+
 }
 @media (min-width: 768px) and (max-width: 841px) {
     .navbar {
@@ -374,6 +393,15 @@ label {
     }
     .mobile-tabs {
         display: flex !important;
+    }
+    .inner-payment {
+        display: block !important;
+    }
+    .message-payment {
+        width: 279px !important;
+    }
+    .payment-card {
+        width: auto !important;
     }
 
 }
