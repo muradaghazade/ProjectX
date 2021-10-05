@@ -1,0 +1,91 @@
+@media (min-width: 361px) and (max-width: 767px) {
+    .big-banners {
+        padding: 30px !important;
+    }
+    .phones-banner {
+        height: 100% !important;
+        margin-bottom: 16px;
+    }
+    .other-banners {
+        padding: 0 !important;
+    }
+    .smart {
+        height: auto !important;
+    }
+    .banner-image {
+        margin-left: 170px !important;
+    }
+    .banner-image2 {
+        margin-left: 150px !important;
+        width: 53% !important;
+    }
+    .icon-texts {
+        width: 100% !important;
+    }
+    .brands {
+        display: none !important;
+    }
+
+   
+     }
+ @media (max-width: 360px) {
+    .big-banners {
+        padding: 30px !important;
+    }
+    .phones-banner {
+        height: 100% !important;
+        margin-bottom: 16px;
+    }
+    .other-banners {
+        padding: 0 !important;
+    }
+    .smart {
+        height: auto !important;
+    }
+    .banner-image {
+        margin-left: 170px !important;
+    }
+    .banner-image2 {
+        margin-left: 150px !important;
+        width: 53% !important;
+    }
+    .icon-texts {
+        width: 100% !important;
+    }
+    .brands {
+        display: none !important;
+    }
+
+     
+ }
+ @media (min-width: 768px) and (max-width: 841px) {
+    .big-banners {
+        padding: 30px !important;
+    }
+    .phones-banner {
+        height: 100% !important;
+        margin-bottom: 16px;
+    }
+    .other-banners {
+        padding: 0 !important;
+    }
+    .smart {
+        height: auto !important;
+    }
+    .banner-image {
+        margin-left: 170px !important;
+    }
+    .banner-image2 {
+        margin-left: 150px !important;
+        width: 53% !important;
+    }
+    .icon-texts {
+        width: 100% !important;
+    }
+    .brands {
+        display: none !important;
+    }
+
+ 
+ }
+ 
