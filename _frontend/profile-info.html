@@ -78,6 +78,74 @@ white;
 .card-header {
     border-bottom: none;
 }
+
+@media (min-width: 361px) and (max-width: 767px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
+ @media (max-width: 360px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
+ @media (min-width: 768px) and (max-width: 841px) {
+    
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
     </style>
 </head>
 
@@ -143,7 +211,7 @@ white;
         </li>
     </ul>
 
-    <div class="profile-main" style="background-color: #FAF9F9; padding-bottom: 158px; border-radius: 8px;">
+    <div class="profile-main" style="background-color: #FAF9F9; padding-bottom: 158px;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 sections-cont" style="margin-top: 40px; padding-left: 73px;">
@@ -163,12 +231,120 @@ white;
                 <div class="col-md-9 profile-cards-cont" style="margin-top: 40px; padding-left: 34px;">
                     <div class="profile-names-cont">
                         <h4 class="profile-name-mobile" style="margin-bottom: 16px; color: #4F4F4F;">Profilim</h4>
-                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F; margin-top: 9px;">Sifarişlərim</h5>
+                        <h5 style="font-size: 20px; padding-bottom: 16px; color: #4F4F4F; margin-top: 9px;">Şəxsi məlumatlar</h5>
                     </div>
                     <div class="empty-cont">
-                        <div style="background-color: white; text-align: center;height: 371px;">
-                            <img src="img/shopping-cart.svg" style="margin-top: 103px;" alt="">
-                            <p style="color: #BDBDBD; margin-top: 40px;">Hal hazırda heç bir sifarişiniz yoxdur</p>
+                        <div style="background-color: white; width: 720px; border-radius: 8px;">
+                            <form action="" style="padding-left: 32px; padding-top: 32px; padding-bottom: 32px;">
+                                <div style="display: flex;" class="profile-inputs-cont">
+                                <div style="margin-bottom: 24px; margin-right: 32px;">
+                                    <p>Ad</p>
+                                    <input type="text" style="background: #F2F2F2;
+                                    border-radius: 8px;
+                                    width: 279px;
+                                    height: 48px;
+                                    opacity: 1;
+                                    position: inherit;
+                                    border: none;
+                                    padding-left: 16px;" placeholder="Adınızı daxil edin">
+                                </div>
+                                <div style="margin-bottom: 24px;">
+                                  <p>Soyad</p>
+                                  <input type="text" style="background: #F2F2F2;
+                                  border-radius: 8px;
+                                  width: 279px;
+                                  height: 48px;
+                                  opacity: 1;
+                                  position: inherit;
+                                  border: none;
+                                  padding-left: 16px;" placeholder="Soyadınızı daxil edin">
+                              </div>
+                            </div>
+                              
+                        
+                        <div style="display: flex;" class="profile-inputs-cont">
+                            <div style="margin-bottom: 24px; margin-right: 32px;">
+                                <p>E-mail</p>
+                                <input type="text" style="background: #F2F2F2;
+                                border-radius: 8px;
+                                width: 279px;
+                                height: 48px;
+                                opacity: 1;
+                                position: inherit;
+                                border: none;
+                                padding-left: 16px;" placeholder="nümunə@gmail.com">
+                            </div>
+                            <div style="margin-bottom: 24px;">
+                            <p>Mobil nömrə</p>
+                            <input type="text" style="background: #F2F2F2;
+                            border-radius: 8px;
+                            width: 279px;
+                            height: 48px;
+                            opacity: 1;
+                            position: inherit;
+                            border: none;
+                            padding-left: 16px;" placeholder="000 - 00 - 00">
+                        </div>
+
+                        </div>
+                        <div style="display: flex;" class="profile-inputs-cont">
+                            <div style="margin-bottom: 32px; margin-right: 32px;">
+                                <p>Doğum tarixini</p>
+                                <input type="text" style="background: #F2F2F2;
+                                border-radius: 8px;
+                                width: 279px;
+                                height: 48px;
+                                opacity: 1;
+                                position: inherit;
+                                border: none;
+                                padding-left: 16px;" placeholder="Doğum tarixinizi seçin">
+                            </div>
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Məlumatları yenilə" style="background-color: #2DD06E; border: none; border-radius: 8px; padding: 16px 80px; color: white;">
+                        </div>
+                              
+                            </form>
+                        </div>
+                    </div>
+                    <h5 style="font-size: 20px; padding-bottom: 16px; color: #4F4F4F; margin-top: 48px;">Şifrəni yenilə</h5>
+                    <div class="empty-cont">
+                        <div style="background-color: white; width: 720px; border-radius: 8px;">
+                            <form action="" style="padding-left: 32px; padding-top: 32px; padding-bottom: 32px;">
+                                <div style="display: flex;" class="profile-inputs-cont">
+                                <div style="margin-bottom: 24px; margin-right: 32px;">
+                                    <p>Cari şifrə</p>
+                                    <input type="password" style="background: #F2F2F2;
+                                    border-radius: 8px;
+                                    width: 279px;
+                                    height: 48px;
+                                    opacity: 1;
+                                    position: inherit;
+                                    border: none;
+                                    padding-left: 16px;" placeholder="Cari şifrənizi daxil edin">
+                                </div>
+                                <div style="margin-bottom: 24px;">
+                                  <p>Yeni şifrə</p>
+                                  <input type="password" style="background: #F2F2F2;
+                                  border-radius: 8px;
+                                  width: 279px;
+                                  height: 48px;
+                                  opacity: 1;
+                                  position: inherit;
+                                  border: none;
+                                  padding-left: 16px;" placeholder="Yeni şifrənizi daxil edin">
+                              </div>
+                            </div>
+                              
+                        
+                        
+                        
+                        <div style="text-align: center;">
+                            <input type="submit" value="Məlumatları yenilə" style="background-color: #2DD06E; border: none; border-radius: 8px; padding: 16px 80px; color: white;">
+                        </div>
+                              
+                            </form>
                         </div>
                     </div>
                     

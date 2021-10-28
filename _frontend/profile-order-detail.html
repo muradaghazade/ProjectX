@@ -78,6 +78,68 @@ white;
 .card-header {
     border-bottom: none;
 }
+
+
+@media (min-width: 361px) and (max-width: 767px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    }
+ @media (max-width: 360px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    }
+ @media (min-width: 768px) and (max-width: 841px) {
+    
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    }
+ 
+
     </style>
 </head>
 
@@ -163,14 +225,17 @@ white;
                 <div class="col-md-9 profile-cards-cont" style="margin-top: 40px; padding-left: 34px;">
                     <div class="profile-names-cont">
                         <h4 class="profile-name-mobile" style="margin-bottom: 16px; color: #4F4F4F;">Profilim</h4>
-                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F; margin-top: 9px;">Sifarişlərim</h5>
+                        <a href="profile-orders.html" style="text-decoration: none;"><h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F; margin-top: 9px;"><img src="img/arrow-left.svg" alt="" style="margin-top: -4px;"> <span>Sifarişin detalları</span></h5></a>
                     </div>
                     <div class="empty-cont">
-                        <div style="background-color: white; padding-left: 32px; padding-right: 32px;">
+                        <div class="blocks-cont" style="background-color: white; padding-left: 32px; padding-right: 32px; border-radius: 8px;">
                             <div class="order-block-1 d-flex" style="border-bottom: 1px solid #BDBDBD;">
-                                <img class="card-img-top" style="width: 215px; margin-top: 22px;"
-                                                src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000"
-                                                alt="Card image cap">
+                                <div class="block-1-img-cont" style="margin-top: 22px;">
+                                    <img class="card-img-top" style="width: 215px;"
+                                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000"
+                                    alt="Card image cap">
+                                </div>
+                                
                                                 <div>
                                                     <h5 class="card-title" style="font-size: 16px; margin-top: 60px;">iPhone 12, 64 GB, Bənövşəyi, (MJNM3) Golden  5 G 8690604083886 0212042</h5>
                                                     <div class="d-flex">
@@ -202,7 +267,7 @@ white;
                             <div class="order-block-2" style="padding-top: 32px; border-bottom: 1px solid #BDBDBD;">
                                 
                                 <div style="display: flex;">
-                                    <div style="margin-right: 201px;">
+                                    <div class="personal-info" style="margin-right: 201px;">
                                         <h5 style="font-size: 20px; padding-bottom: 24px; color: #4F4F4F;">Şəxsi məlumatlar</h5>
                                         <ul style="padding-left: 16px;">
                                             <li style="list-style: none; margin-bottom: 12px;"><span style="color: #1D2123;">Gunel</span></li>

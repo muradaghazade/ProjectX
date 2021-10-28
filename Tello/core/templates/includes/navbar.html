@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light pr-5 pt-4 pb-4" style="padding-left: 75px;">
     <a class="navbar-brand" href="index.html"><h2>Project X</h2></a>
 
@@ -16,21 +17,26 @@
 
             <div class="dropdown show" style="padding-top: 8px;">
               <a class="btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="img/person.svg" alt="">
+                <img src="{% static 'img/person.svg' %}" alt="">
 
               </a>
             
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% if request.user.is_authenticated %}
+                <a class="dropdown-item" href="#">{{request.user}}</a>
+                <a class="dropdown-item" href="{% url 'account:log-out' %}">Sign out</a>
+                {% else %}
                 <a class="dropdown-item" href="login.html">Sign in</a>
                 <a class="dropdown-item" href="register.html">Sign up</a>
+                {% endif %}
               </div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="img/heart.svg" alt=""></a>
+            <a class="nav-link" href="#"><img src="{% static 'img/heart.svg' %}" alt=""></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#"><img src="img/cart.svg" alt=""> <span style="color: white; background-color: #2DD06E; border-radius: 50%; padding: 1px 5px; font-size: 14px;">0</span></a>
+            <a class="nav-link disabled" href="#"><img src="{% static 'img/cart.svg' %}" alt=""> <span style="color: white; background-color: #2DD06E; border-radius: 50%; padding: 1px 5px; font-size: 14px;">0</span></a>
           </li>
       </div>
         </ul>

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 import os
 
@@ -123,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'accounts.User'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -137,3 +138,14 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = reverse_lazy('core:main')
+
+LOGOUT_REDIRECT_URL = reverse_lazy('account:login')
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'taskilled@gmail.com'
+EMAIL_HOST_PASSWORD = 'gaehqjqzfbxykujt'

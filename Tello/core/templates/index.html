@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 
     {% block css %}
-    <link rel="stylesheet" href="css/main-page.css">
+    <link rel="stylesheet" href="{% static 'css/main-page.css' %}">
+    <style>
+      .card {
+        height: 400px;
+      }
+    </style>
     {% endblock %}
 
 {% block content %}
@@ -10,13 +16,13 @@
             
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="img/Screen Shot 2021-09-08 at 17.27.18.png" alt="First slide">
+                <img class="d-block w-100" src="{% static 'img/Screen Shot 2021-09-08 at 17.27.18.png' %}" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="img/Screen Shot 2021-09-08 at 18.01.15.png" alt="Second slide">
+                <img class="d-block w-100" src="{% static 'img/Screen Shot 2021-09-08 at 18.01.15.png' %}" alt="Second slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="img/Screen Shot 2021-09-08 at 17.52.01.png" alt="Third slide">
+                <img class="d-block w-100" src="{% static 'img/Screen Shot 2021-09-08 at 17.52.01.png' %}" alt="Third slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -54,8 +60,9 @@
               </div>
               <div class="cards-row mt-5">
                 <div class="row">
+                  {% for product in products %}
                     <div class="col-md-3" style="height: 386px;">
-                        <a href="product.html" style="color: black; text-decoration: none;">
+                        <a href="{% url 'core:product' product.slug %}" style="color: black; text-decoration: none;">
                         <div class="card" style="width: 18rem;">
                           <div class="heart-cont" style="display: flex;
                           justify-content: end;">
@@ -64,23 +71,26 @@
                             width: 40px;
                             margin-top: 10px;
                             margin-right: 10px;">
-                              <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
+                              <img src="{% static 'img/heart2.svg' %}" alt="" style="margin-top: 7px; margin-left: 7px;">
 
                             </div>
                           </div>
                             <div style="text-align: center;">
-                            <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
+                              {% for image in product.product_image.all|slice:"1" %}
+                              <img class="card-img-top" style="width: 215px;" src="media/{{image}}" alt="Card image cap">
+                              {% endfor %}
                         </div>
                             <div class="card-body">
-                              <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
+                              <h5 class="card-title" style="font-size: 16px;">{{product.brand}} {{product.title}}</h5>
                               
-                              <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
+                              <p class="card-text">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
                               
                             </div>
                           </div>
                         </a>
                     </div>
-                    <div class="col-md-3" style="height: 386px;">
+                  {% endfor %}
+                    <!-- <div class="col-md-3" style="height: 386px;">
                       <a href="product.html" style="color: black; text-decoration: none;">
                       <div class="card" style="width: 18rem;">
                         <div class="heart-cont" style="display: flex;
@@ -157,7 +167,7 @@
                       </div>
                     </div>
                   </a>
-              </div>
+              </div> -->
           </div>
       </div>
     </div>
@@ -167,110 +177,36 @@
         </div>
         <div class="cards-row mt-5">
           <div class="row">
+            {% for product in products %}
             <div class="col-md-3" style="height: 386px;">
-              <a href="" style="color: black; text-decoration: none;">
-              <div class="card" style="width: 18rem;">
-                <div class="heart-cont" style="display: flex;
-                justify-content: end;">
-                  <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-                  height: 40px;
-                  width: 40px;
-                  margin-top: 10px;
-                  margin-right: 10px;">
-                    <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
+                <a href="{% url 'core:product' product.slug %}" style="color: black; text-decoration: none;">
+                <div class="card" style="width: 18rem;">
+                  <div class="heart-cont" style="display: flex;
+                  justify-content: end;">
+                    <div style="border: 1px solid #F2F2F2; border-radius: 50%;
+                    height: 40px;
+                    width: 40px;
+                    margin-top: 10px;
+                    margin-right: 10px;">
+                      <img src="{% static 'img/heart2.svg' %}" alt="" style="margin-top: 7px; margin-left: 7px;">
 
+                    </div>
                   </div>
+                    <div style="text-align: center;">
+                      {% for image in product.product_image.all|slice:"1" %}
+                              <img class="card-img-top" style="width: 215px;" src="media/{{image}}" alt="Card image cap">
+                      {% endfor %}
                 </div>
-                  <div style="text-align: center;">
-                  <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-              </div>
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                    
-                    <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
-                    
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-size: 16px;">{{product.brand}} {{product.title}}</h5>
+                      
+                      <p class="card-text">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
+                      
+                    </div>
                   </div>
-                </div>
-              </a>
-          </div>
-          <div class="col-md-3" style="height: 386px;">
-            <a href="" style="color: black; text-decoration: none;">
-            <div class="card" style="width: 18rem;">
-              <div class="heart-cont" style="display: flex;
-              justify-content: end;">
-                <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-                height: 40px;
-                width: 40px;
-                margin-top: 10px;
-                margin-right: 10px;">
-                  <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-                </div>
-              </div>
-                <div style="text-align: center;">
-                <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
+                </a>
             </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                  
-                  <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
-                  
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-md-3" style="height: 386px;">
-          <a href="" style="color: black; text-decoration: none;">
-          <div class="card" style="width: 18rem;">
-            <div class="heart-cont" style="display: flex;
-            justify-content: end;">
-              <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-              height: 40px;
-              width: 40px;
-              margin-top: 10px;
-              margin-right: 10px;">
-                <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-              </div>
-            </div>
-              <div style="text-align: center;">
-              <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-          </div>
-              <div class="card-body">
-                <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                
-                <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
-                
-              </div>
-            </div>
-          </a>
-      </div>
-      <div class="col-md-3" style="height: 386px;">
-        <a href="" style="color: black; text-decoration: none;">
-        <div class="card" style="width: 18rem;">
-          <div class="heart-cont" style="display: flex;
-          justify-content: end;">
-            <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-            height: 40px;
-            width: 40px;
-            margin-top: 10px;
-            margin-right: 10px;">
-              <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-            </div>
-          </div>
-            <div style="text-align: center;">
-            <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-        </div>
-            <div class="card-body">
-              <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-              
-              <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
-              
-            </div>
-          </div>
-        </a>
-    </div>
+          {% endfor %}
     </div>
 </div>
 </div>
@@ -299,8 +235,9 @@
           </div>
           <div class="cards-row mt-5">
             <div class="row">
-              <div class="col-md-3" style="height: 386px;">
-                <a href="" style="color: black; text-decoration: none;">
+              {% for product in accessories %}
+            <div class="col-md-3" style="height: 386px;">
+                <a href="{% url 'core:product' product.slug %}" style="color: black; text-decoration: none;">
                 <div class="card" style="width: 18rem;">
                   <div class="heart-cont" style="display: flex;
                   justify-content: end;">
@@ -309,100 +246,25 @@
                     width: 40px;
                     margin-top: 10px;
                     margin-right: 10px;">
-                      <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
+                      <img src="{% static 'img/heart2.svg' %}" alt="" style="margin-top: 7px; margin-left: 7px;">
 
                     </div>
                   </div>
                     <div style="text-align: center;">
-                    <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
+                      {% for image in product.product_image.all|slice:"1" %}
+                              <img class="card-img-top" style="width: 215px;" src="media/{{image}}" alt="Card image cap">
+                      {% endfor %}
                 </div>
                     <div class="card-body">
-                      <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
+                      <h5 class="card-title" style="font-size: 16px;">{{product.brand}} {{product.title}}</h5>
                       
-                      <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
+                      <p class="card-text">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
                       
                     </div>
                   </div>
                 </a>
             </div>
-            <div class="col-md-3" style="height: 386px;">
-              <a href="" style="color: black; text-decoration: none;">
-              <div class="card" style="width: 18rem;">
-                <div class="heart-cont" style="display: flex;
-                justify-content: end;">
-                  <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-                  height: 40px;
-                  width: 40px;
-                  margin-top: 10px;
-                  margin-right: 10px;">
-                    <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-                  </div>
-                </div>
-                  <div style="text-align: center;">
-                  <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-              </div>
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                    
-                    <p class="card-text" style="color: #DB2C66;"><span class="card-text" style="font-size: 14px; text-decoration: line-through; margin-right: 10px; color: gray;">2400 $ </span>2400 $</p>
-                    
-                  </div>
-                </div>
-              </a>
-          </div>
-          <div class="col-md-3" style="height: 386px;">
-            <a href="" style="color: black; text-decoration: none;">
-            <div class="card" style="width: 18rem;">
-              <div class="heart-cont" style="display: flex;
-              justify-content: end;">
-                <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-                height: 40px;
-                width: 40px;
-                margin-top: 10px;
-                margin-right: 10px;">
-                  <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-                </div>
-              </div>
-                <div style="text-align: center;">
-                <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-            </div>
-                <div class="card-body">
-                  <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                  
-                  <p class="card-text">2400$</p>
-                  
-                </div>
-              </div>
-            </a>
-        </div>
-        <div class="col-md-3" style="height: 386px;">
-          <a href="" style="color: black; text-decoration: none;">
-          <div class="card" style="width: 18rem;">
-            <div class="heart-cont" style="display: flex;
-            justify-content: end;">
-              <div style="border: 1px solid #F2F2F2; border-radius: 50%;
-              height: 40px;
-              width: 40px;
-              margin-top: 10px;
-              margin-right: 10px;">
-                <img src="img/heart2.svg" alt="" style="margin-top: 7px; margin-left: 7px;">
-
-              </div>
-            </div>
-              <div style="text-align: center;">
-              <img class="card-img-top" style="width: 215px;" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1604021663000" alt="Card image cap">
-          </div>
-              <div class="card-body">
-                <h5 class="card-title" style="font-size: 16px;">Apple iPhone 12, 64 GB, Bənövşəyi</h5>
-                
-                <p class="card-text">2400$</p>
-                
-              </div>
-            </div>
-          </a>
-      </div>
+          {% endfor %}
       </div>
   </div>
 </div>
@@ -412,25 +274,25 @@
           <div class="col-md-6 col-12 phones-banner" style="height: 728px; background: #F2F2F2; border-radius: 8px; padding-left: 40px; padding-top: 40px; padding-right: 0;">
             <h3 style="font-size: 24px;">Telefonlar</h3>
             <h4 style="font-size: 16px; margin-top: 24px; font-weight: 300; margin-bottom: 24px;">Mehsul sayi: <span>322</span></h4>
-            <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="img/arrow-ios-right.png" alt=""></span></a>
-            <img src="img/image 6xiaomi.png" alt="" style="width: 100%;
+            <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="{% static 'img/arrow-ios-right.png' %}" alt=""></span></a>
+            <img src="{% static 'img/image 6xiaomi.png' %}" alt="" style="width: 100%;
             margin-top: 104px;">
           </div>
           <div class="col-md-6 col-12 other-banners" style="height: 728px;">
             <div class="col-md-12 smart" style="background: #F2F2F2; height: 352px; border-radius: 8px; padding-left: 40px; padding-top: 40px;">
               <h3 style="font-size: 24px;">Smart Saat</h3>
               <h4 style="font-size: 16px; margin-top: 24px; font-weight: 300; margin-bottom: 24px;">Mehsul sayi: <span>322</span></h4>
-              <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="img/arrow-ios-right.png" alt=""></span></a>
+              <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="{% static 'img/arrow-ios-right.png' %}" alt=""></span></a>
               <br>
-              <img src="img/image 7.png" class="banner-image" alt="" style="width: 40%; margin-left: 315px;
+              <img src="{% static 'img/image 7.png' %}" class="banner-image" alt="" style="width: 40%; margin-left: 315px;
               margin-top: -52px;">
             </div>
             <div class="col-md-12 smart" style="background: #F2F2F2; height: 352px; margin-top: 24px; border-radius: 8px; padding-left: 40px; padding-top: 40px;">
               <h3 style="font-size: 24px;">Aksesuar</h3>
               <h4 style="font-size: 16px; margin-top: 24px; font-weight: 300; margin-bottom: 24px;">Mehsul sayi: <span>322</span></h4>
-              <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="img/arrow-ios-right.png" alt=""></span></a>
+              <a href="" style="font-size: 16px; font-weight: 300;">Məhsullara keçid <span><img src="{% static 'mg/arrow-ios-right.png' %}i" alt=""></span></a>
               <br>
-              <img src="img/image 6.png" class="banner-image2" alt="" style="width: 60%; margin-left: 220px;
+              <img src="{% static 'img/image 6.png' %}" class="banner-image2" alt="" style="width: 60%; margin-left: 220px;
               margin-top: -100px;">
             </div>
           </div>
@@ -441,17 +303,17 @@
         <div class="" style="padding: 75px;">
           <div class="row">
             <div class="col-md-4 text-center">
-              <img src="img/box.svg" alt="" style="margin-bottom: 40px;">
+              <img src="{% static 'img/box.svg' %}" alt="" style="margin-bottom: 40px;">
               <h4 style="font-size: 20px; margin-bottom: 24px;">Catdirilma</h4>
               <p class="icon-texts" style="font-size: 16px; width: 320px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
             </div>
             <div class="col-md-4 text-center">
-              <img src="img/card-pos.svg" alt="" style="margin-bottom: 40px;">
+              <img src="{% static 'img/card-pos.svg' %}" alt="" style="margin-bottom: 40px;">
               <h4 style="font-size: 20px; margin-bottom: 24px;">Kredit</h4>
               <p class="icon-texts" style="font-size: 16px; width: 320px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
             </div>
             <div class="col-md-4 text-center">
-              <img src="img/medal-star.svg" alt="" style="margin-bottom: 40px;">
+              <img src="{% static 'img/medal-star.svg' %}" alt="" style="margin-bottom: 40px;">
               <h4 style="font-size: 20px; margin-bottom: 24px;">Zəmanət</h4>
               <p class="icon-texts" style="font-size: 16px; width: 320px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
             </div>

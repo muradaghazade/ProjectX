@@ -68,16 +68,114 @@
 .num {
     border: none;
 }
-.card {
-    /* filter: drop-shadow(0px 4px 24px rgba(130, 130, 130, 0.16)); */
-    border: transparent;
-    box-shadow:none !important;
-    background-color: 
-white;
-}
+
 .card-header {
     border-bottom: none;
 }
+.ab-us-first {
+    background: linear-gradient(to left,#92F596,#2DD06E);
+}
+
+
+@media (min-width: 361px) and (max-width: 767px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .about-us-header {
+        font-size: 40px !important;
+    }
+    .about-us-banner {
+        height: auto !important;
+        padding: 20px !important;
+    }
+    .ab-us-card-texts {
+        width: auto !important;
+    }
+    .ab-us-cardd {
+        height: auto !important;
+    }
+    }
+ @media (max-width: 360px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .about-us-header {
+        font-size: 40px !important;
+    }
+    .about-us-banner {
+        height: auto !important;
+        padding: 20px !important;
+    }
+    .ab-us-card-texts {
+        width: auto !important;
+    }
+    .ab-us-cardd {
+        height: auto !important;
+    }
+    }
+ @media (min-width: 768px) and (max-width: 841px) {
+    
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .about-us-header {
+        font-size: 40px !important;
+    }
+    .about-us-banner {
+        height: auto !important;
+        padding: 20px !important;
+    }
+    .ab-us-card-texts {
+        width: auto !important;
+    }
+    .ab-us-cardd {
+        height: auto !important;
+    }
+    }
+ 
+
     </style>
 </head>
 
@@ -143,39 +241,90 @@ white;
         </li>
     </ul>
 
-    <div class="profile-main" style="background-color: #FAF9F9; padding-bottom: 158px; border-radius: 8px;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 sections-cont" style="margin-top: 40px; padding-left: 73px;">
-                    <div class="profile-sections" style="width: 280px; background-color: white; border-radius: 8px; padding-top: 32px; padding-left: 26px; padding-bottom: 32px;">
-                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F;">Profilim</h5>
-                        <div>
-                            <ul style="padding-left: 0;">
-                                <li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="img/shopping-cart-green.svg" alt=""><span style="color: #2DD06E;">Sifarişlərim</span></li>
-                                <li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="img/heart.svg" alt=""><span style="color: #4F4F4F;">Favorilərim</span></li>
-                                <li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="img/person.svg" alt=""><span style="color: #4F4F4F;">Şəxsi məlumatlar</span></li>
-                                <li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="img/pin.svg" alt=""><span style="color: #4F4F4F;">Çatdırılma ünvanı</span></li>
-                                <li style="list-style: none;"><img style="margin-right: 16px;" src="img/log-out.svg" alt=""><span style="color: #4F4F4F;">Çıxış</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9 profile-cards-cont" style="margin-top: 40px; padding-left: 34px;">
-                    <div class="profile-names-cont">
-                        <h4 class="profile-name-mobile" style="margin-bottom: 16px; color: #4F4F4F;">Profilim</h4>
-                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F; margin-top: 9px;">Sifarişlərim</h5>
-                    </div>
-                    <div class="empty-cont">
-                        <div style="background-color: white; text-align: center;height: 371px;">
-                            <img src="img/shopping-cart.svg" style="margin-top: 103px;" alt="">
-                            <p style="color: #BDBDBD; margin-top: 40px;">Hal hazırda heç bir sifarişiniz yoxdur</p>
-                        </div>
-                    </div>
-                    
-                </div>
+    <div class="about-us-main">
+        <div class="ab-us-first" style="height: 280px;">
+            <div class="product-path-cont" style="padding-left: 75px; padding-top: 18px;">
+                <p class="list-path" style="margin-bottom: 42px; color: white;">Ana səhifə <img src="img/chevron-right.svg"
+                    style="width: 24px; margin-top: -2px; margin-left: 1px; margin-right: 1px; color: white;" alt="">Tez-tez verilən suallar</p>
+            </div>
+            <div style="padding-left: 75px;">
+                <h1 class="about-us-header" style="color: white; font-size: 60px;">Haqqımızda</h1>
             </div>
         </div>
 
+        <div class="about-us-second">
+            <div class="card about-us-banner" style="height: 324px; width: 73%; margin: 0 auto; margin-top: -70px; padding-left: 40px; margin-bottom: 88px;">
+                <h5 style="font-size: 24px; padding-top: 40px; margin-bottom: 32px;">Tello</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lectus eget dignissim quis cursus orci ipsum. Volutpat ut varius nunc fringilla habitasse netus. Eget lorem parturient sed purus leo, fringilla adipiscing nisl. Turpis dictumst amet, amet dictum turpis mauris suscipit sit. Enim risus tincidunt ipsum, nunc, sed cras. Est in venenatis lobortis quis laoreet velit. Consectetur malesuada pellentesque ac velit fringilla est venenatis. Enim, sagittis lobortis lacus, arcu commodo. Sagittis, varius ac nulla a. Dui nisl, blandit in id hendrerit. Risus diam risus, nec sit. Sed mi arcu gravida iaculis tellus mollis tempor ac.</p>
+            </div>
+
+            <div style="width: 73%; margin: 0 auto;">
+            <div style="text-align: center;">
+                <h4 style="font-size: 34px; margin-bottom: 40px;">Dəyərlərimiz</h4>
+                <div class="d-flex" style="margin-bottom: 36px; flex-wrap: wrap;">
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-right: 35px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/məmnuniyyət.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Keyfiyyət</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-top: 130px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/hörmət.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Müştəri məmnuniyyəti</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex" style="margin-bottom: 36px; flex-wrap: wrap;">
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-right: 35px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/məmnuniyyət2.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Kreativ yanaşma</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-top: 130px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/nəticə yönümlü.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Gənclər</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex" style="margin-bottom: 170px; flex-wrap: wrap;">
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-right: 35px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/məmnuniyyət3.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Ən yaxşı qiymətlər</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card ab-us-cardd" style="height: 160px; padding-top: 32px; padding-left: 32px; border-radius: 8px; padding-right: 48px; margin-top: 130px;">
+                        <div class="d-flex" style="flex-wrap: wrap;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2DD06E; margin-right: 16px;"><img style="margin-top: 10px;" src="img/nəticə yönümlü2.svg" alt=""></div>
+                        <div style="text-align: start;">
+                            <span>Çoxlu hədiyyələr</span>
+                            <p class="ab-us-card-texts" style="width: 352px; font-size: 14px; text-align: start; margin-top: 12px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam laoreet commodo non magna ullamcorper tincidunt augue. Viverra porttitor arcu sed quisque.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
     </div>
 
     <footer class="page-footer font-small mdb-color pt-4" style="color: white;

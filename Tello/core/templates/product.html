@@ -1,0 +1,360 @@
+        {% extends 'base.html' %}
+        {% load static %}
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'css/product.css' %}">
+        <link rel="stylesheet" href="{% static 'css/checkboxes.css' %}">
+        <style>
+            .slick-next,
+            .slick-prev {
+                background-color: rgb(209, 202, 202);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                z-index: 1;
+            }
+    
+            .slick-next:hover,
+            .slick-prev:hover {
+                background-color: rgb(77, 52, 52);
+    
+            }
+    
+            .slick-next:focus,
+            .slick-prev:focus {
+                background-color: rgb(68, 63, 63);
+    
+            }
+    
+            .slick-slide {
+                margin: 0 10px;
+            }
+    
+            .card-header {
+                background-color: transparent;
+            }
+    
+            .btn-link {
+                color: #4F4F4F;
+            }
+    
+            .btn-link:hover {
+                color: #4F4F4F;
+                text-decoration: none;
+            }
+            .page-link {
+                margin-left: 32px;
+            }
+            .page-item:first-child .page-link {
+                margin-left: 0;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+            }
+            .page-item:last-child .page-link {
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+    }
+    .num {
+        border: none;
+    }
+    .slick-next, .slick-prev {
+        background-color: transparent !important;
+    }
+    .slick-prev:before, .slick-next:before {
+        color: gray;
+    }
+    .storages:hover {
+        background-color: #828282 !important;
+        color: white;
+    }
+        </style>
+        {% endblock %}
+
+        {% block content %}
+
+    <div class="main-product">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-12 product-first-part" style="padding-left: 79px; padding-top: 26px;">
+                    <div class="product-path-cont">
+                        <p class="list-path" style="margin-bottom: 42px;">Ana səhifə <img src="{% static 'img/strelka.svg' %}"
+                            style="width: 9px; margin-top: -2px; margin-left: 8px; margin-right: 8px;" alt="">Telefonlar
+                        <img src="{% static 'img/strelka.svg' %}"
+                            style="width: 9px; margin-top: -2px; margin-left: 8px; margin-right: 8px;" alt=""><span
+                            style="color: #828282;">Apple</span></p>
+                    </div>
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for image in product.product_image.all|slice:"1" %}
+                            <div class="carousel-item active">
+                                <img class="d-block" style="width: 375px; margin: 0 auto;" src="/media/{{image}}" alt="First slide">
+                              </div>
+                                {% endfor %}
+                          
+                          {% for image in images %}
+                          <div class="carousel-item">
+                            <img class="d-block" style="width: 375px; margin: 0 auto;" src="/media/{{image}}" alt="Second slide">
+                          </div>
+                          {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev"href="#carouselExampleControls" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon"  style="background-image: url({% static 'img/detail-left.svg' %});"  aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon"  style="background-image: url({% static 'img/detail-right.svg' %});"  aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                      <div class="product-images" style="margin-top: 55px;">
+                        <div class="your-class" style="width: 90%;margin: 0 auto;">
+                            {% for image in all_images %}
+                            <div style="background-color: white; border-radius: 8px; margin-bottom: 32px;">
+                              <img style="margin: 0 auto; margin-top: 12px; width: 72px;" src="/media/{{image}}" alt="">
+                            </div>
+                            {% endfor %}
+                        
+                        </div>
+                      </div>
+                    
+                </div>
+                <div class="col-md-6 col-12 product-second-part" style="padding-top: 106px;">
+                    <div class="configure-product">
+                        <div class="product-title">
+                            <h6 class="product-title-h6" style="font-size: 20px; width: 488px; line-height: 28px;">{{product.brand}} {{product.title}}</h6>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <img src="{% static 'img/star.svg' %}" alt="">
+                                <img src="{% static 'img/star.svg' %}" alt="">
+                                <img src="{% static 'img/star.svg' %}" alt="">
+                                <img src="{% static 'img/star.svg' %}" alt="">
+                                <img src="{% static 'img/star2.svg' %}" alt="">
+                                <span style="font-size: 12px; border-right: 1px solid #F2F2F2; padding-right: 8px;">(226)</span>
+                                <span style="font-size: 14px; color: #2D9CDB; padding-left: 8px;">57 rəy</span>
+                            </div>
+                        </div>
+                        <div class="prices" style="margin-top: 24px; line-height: 24px; border-bottom: 1px solid #F2F2F2; padding-bottom: 12px;">
+                            
+                                <p class="card-text" style="font-size: 18px;">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
+                        </div>
+                        <div class="colors" style="padding-top: 24px;">
+                            <div style="display: flex;"> <p style="font-size: 14px; padding-top: 5px; margin-right: 22px;">Rəng: </p>
+                                {% for color in product.color.all %}
+                                <div style="width: 32px; height: 32px; background-color: {{color}}; border-radius: 50%; border: 1px solid #E0E0E0; margin-right: 22px;"></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="storage" style="padding-top: 24px; border-bottom: 1px solid #F2F2F2; padding-bottom: 24px;">
+                            <div style="display: flex;"> <p style="font-size: 14px; padding-top: 5px; margin-right: 22px;">Yaddaş: </p>
+                                <!-- <div class="storages" style="width: 76px; text-align: center; padding-top: 5px; height: 36px; background-color: #4F4F4F; border-radius: 8px; border: none; margin-right: 22px; color: white;">256GB</div> -->
+                                {% for storage in product.storage.all %}
+                                <div class="storages" style="width: 76px; text-align: center; padding-top: 5px; height: 36px; background-color: #F2F2F2; border-radius: 8px; border: none; margin-right: 22px;">{{storage}}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="counter" style="padding-top: 24px; padding-bottom: 56px;">
+                            <div class="counter-elements d-flex">
+                                <div class="counter-plus" style="width: 32px; height: 32px; background-color: #F2F2F2; border-radius: 50%; text-align: center; padding-top: 2px; margin-right: 32px;">
+                                    <img src="{% static 'img/plus 2.svg' %}" alt="">
+                                </div>
+                                <span style="margin-top: 4px;">1</span>
+                                <div class="counter-plus" style="width: 32px; height: 32px; background-color: #F2F2F2; border-radius: 50%; text-align: center; padding-top: 2px; margin-left: 32px;">
+                                    <img src="{% static 'img/plus 2 (1).svg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="purchase-buttons d-flex">
+                            <button class="basket-add" style="border: none; border-radius: 8px; width: 197px; height: 48px; background-color: #2DD06E; color: white; margin-right: 28px;"><img src="{% static 'img/white-cart.svg' %}" style="margin-right: 16px; width: 20px; margin-top: -2px;" alt=""> Səbətə at</button>
+                            <button class="basket-add" style="border: 1px solid #2DD06E; border-radius: 8px; width: 197px; height: 48px; background-color: white; color: #2DD06E;"><img src="{% static 'img/green-heart.svg' %}" style="margin-right: 16px; width: 20px; margin-top: -2px;" alt="">İstək listinə at</button>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-product-part container-fluid" style="padding-left: 79px;  padding-right: 79px;  margin-top: 96px;">
+            <div class="product-tabs" style="border-bottom: 1px solid #C4C4C4; padding-bottom: 16px;">
+                <button id="info-button" style="font-size: 20px; border: none; background-color: transparent; margin-right: 181px; outline: none;">Texniki Xüsusiyyətləri</button>
+                <button id="comment-button" style="font-size: 20px; border: none; background-color: transparent; color: #BDBDBD; outline: none;">Rəylər</button>
+            </div>
+            <div class="container-fluid" id="info-part" style="padding-left: 100px; margin-bottom: 100px;padding-top: 32px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="main-parameters" style="width: 352px; margin-bottom: 32px;">
+                            <h2 style="font-size: 20px;" class="info-headings">Əsas göstəricilər</h2>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">İstehsalçı</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.brand}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Növ</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.form_factor}}</span>
+                            </div>
+                            {% if product.operating_system != None %}
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Əməliyyat sistemi</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.operating_system}}</span>
+                            </div>
+                            {% endif %}
+                            {% if product.battery != None %}
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Batareya</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.battery}}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if product.category.title == "Smartphones" %}
+                        <div class="more-parameters" style="width: 352px; margin-bottom: 32px;">
+                            <h2 style="font-size: 20px;" class="info-headings">Əlavə göstəricilər</h2>
+                            
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Kamera</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.camera}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">CPU</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.cpu}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Şəbəkə</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.cellular_technology}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Operativ Yaddaş</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.ram}}</span>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if product.category.title == "Smartphones" %}
+                        <div class="best-parameters" style="width: 352px; margin-bottom: 32px;">
+                            <h2 style="font-size: 20px;" class="info-headings">Üstünlüklər</h2>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Qorunma dərəcəsi</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.water_and_dust_rating}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Qarantiya</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.guarantee}}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <span style="color: #828282; font-size: 16px;">Displey tipi</span>
+                                <span style="color: #828282; font-size: 16px;">{{product.display_type}}</span>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="main-parameters" style="width: 456px; margin-bottom: 32px;">
+                            <h2 style="font-size: 20px;" class="info-headings">Məhsul haqqında</h2>
+                            <div style="display: flex; justify-content: space-between; padding-left: 16px; padding-top: 24px; padding-bottom: 16px;">
+                                <p style="color: #828282; font-size: 16px;">{{product.description}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container-fluid" id="comment-part" style="margin-bottom: 140px;">
+           <div class="comments-div">
+            <div class="container-fluid" style="padding-bottom: 38px; border-bottom: 1px solid #C4C4C4;padding-top: 32px;">
+                <div class="row">
+                    <div class="col-md-3" style="text-align: center; border-right: 1px solid #C4C4C4;">
+                        <h1>4</h1>
+                        <div class="stars">
+                            <img src="{% static 'img/star.svg' %}" alt="">
+                            <img src="{% static 'img/star.svg' %}" alt="">
+                            <img src="{% static 'img/star.svg' %}" alt="">
+                            <img src="{% static 'img/star.svg' %}" alt="">
+                            <img src="{% static 'img/star2.svg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 31px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h6 style="font-size: 20px;">Gunel Mammadova</h6>
+                                <p style="font-size: 12px;">Yaddaş - 64, Rəng - Qara</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 12px;">5 gün əvvəl</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color: #4F4F4F;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis viverra lacus ut et, etiam. Vel ut in nunc nunc ut sit nibh tortor sit. Consectetur sit auctor odio quis suspendisse tincidunt quis. Et tristique amet aenean nibh porttitor quis aliquam integer. Consectetur lacus, volutpat malesuada libero. Sollicitudin libero pharetra a.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" style="padding-top: 32px; border-bottom: 1px solid #C4C4C4; padding-bottom: 38px;">
+                <div class="row">
+                    <div class="col-md-3" style="text-align: center; border-right: 1px solid #C4C4C4;">
+                        <h1>4</h1>
+                        <div class="stars">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star2.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 31px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <h6 style="font-size: 20px;">Gunel Mammadova</h6>
+                                <p style="font-size: 12px;">Yaddaş - 64, Rəng - Qara</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 12px;">5 gün əvvəl</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color: #4F4F4F;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis viverra lacus ut et, etiam. Vel ut in nunc nunc ut sit nibh tortor sit. Consectetur sit auctor odio quis suspendisse tincidunt quis. Et tristique amet aenean nibh porttitor quis aliquam integer. Consectetur lacus, volutpat malesuada libero. Sollicitudin libero pharetra a.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+           </div>
+
+           <div class="write-comment" style="margin-top: 48px; text-align: center;">
+               <form class="comment-form" action="" style="width: 800px; margin: 0 auto;">
+                   <h6 style="font-size: 20px;margin-bottom: 76px;">Rəy Bildir</h6>
+                    <div style="display: flex;" class="form-fullname">
+                        <div class="name-cont" style="text-align: start; margin-right: 32px;">
+                            <p><label for="name">Ad</label></p>
+                            <input class="name-input" name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 384px; height: 48px;" placeholder="Adınızı daxil edin">
+                        </div>
+                        <div style="text-align: start;">
+                            <p><label for="name">Soyad</label></p>
+                            <input class="lastname-input" name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 384px; height: 48px;" placeholder="Soyadınızı daxil edin">
+                        </div>
+                    </div>
+                    <div style="text-align: start; margin-top: 32px;">
+                        <p><label for="name">Rəyinizi yazın</label></p>
+                        <textarea name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 100%; padding-top: 14px; resize: none; height: 114px;" placeholder="Rəyinizi buraya yazın"></textarea>
+                    </div>
+                    <div style="text-align: end; margin-top: 32px;">
+                        <input type="submit" value="Rəyini bildir" style="background-color: #2DD06E; color: white; border-radius: 8px; border: none;width: 174px; height: 44px;">
+
+                    </div>
+               </form>
+           </div>
+    </div>
+    </div>
+    {% endblock %}
+
+        {% block js %}
+<script src="{% static 'js/product-tabs.js' %}"></script>
+<script src="{% static 'slick/slick.js' %}"></script>
+
+        {% endblock %}
