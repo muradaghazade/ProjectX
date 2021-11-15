@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkboxes.css' %}">
+    <link rel="stylesheet" href="{% static 'slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <style>
+        .profile-infp-inp {
+            background: #F2F2F2;
+                                    border-radius: 8px;
+                                    width: 279px;
+                                    height: 48px;
+                                    opacity: 1;
+                                    position: inherit;
+                                    border: none;
+                                    padding-left: 16px;
+        }
+        .slick-next,
+        .slick-prev {
+            background-color: rgb(209, 202, 202);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            z-index: 1;
+        }
+
+        .slick-next:hover,
+        .slick-prev:hover {
+            background-color: rgb(77, 52, 52);
+
+        }
+
+        .slick-next:focus,
+        .slick-prev:focus {
+            background-color: rgb(68, 63, 63);
+
+        }
+
+        .slick-slide {
+            margin: 0 10px;
+        }
+
+        .card-header {
+            background-color: transparent;
+        }
+
+        .btn-link {
+            color: #4F4F4F;
+        }
+
+        .btn-link:hover {
+            color: #4F4F4F;
+            text-decoration: none;
+        }
+        .page-link {
+            margin-left: 32px;
+        }
+        .page-item:first-child .page-link {
+            margin-left: 0;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+        }
+        .page-item:last-child .page-link {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+}
+.num {
+    border: none;
+}
+.card {
+    /* filter: drop-shadow(0px 4px 24px rgba(130, 130, 130, 0.16)); */
+    border: transparent;
+    box-shadow:none !important;
+    background-color: 
+white;
+}
+.card-header {
+    border-bottom: none;
+}
+
+@media (min-width: 361px) and (max-width: 767px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
+ @media (max-width: 360px) {
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
+ @media (min-width: 768px) and (max-width: 841px) {
+    
+    .empty-cont {
+        display: flex;
+        justify-content: initial !important;
+    }
+    .blocks-cont {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .personal-info {
+        margin-right: 5px !important;
+    }
+    .block-1-img-cont {
+        text-align: center;
+    }
+    .order-block-1 {
+        display: block !important;
+    }
+    .profile-inputs-cont {
+        display: block !important;
+    }
+    }
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <div class="profile-main" style="background-color: #FAF9F9; padding-bottom: 158px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 sections-cont" style="margin-top: 40px; padding-left: 73px;">
+                    <div class="profile-sections" style="width: 280px; background-color: white; border-radius: 8px; padding-top: 32px; padding-left: 26px; padding-bottom: 32px;">
+                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F;">Profilim</h5>
+                        <div>
+                            <ul style="padding-left: 0;">
+                                <a href="" style="text-decoration: none;"><li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="{% static 'img/cart.svg' %}" alt=""><span style="color: #4F4F4F;">Sifarişlərim</span></li></a>
+                                <a href="{% url 'accounts:profile-favorites' request.user.slug%}" style="text-decoration: none;"><li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="{% static 'img/heart-gree.svg' %}" alt=""><span style="color: #2DD06E;">Favorilərim</span></li></a>
+                                <a href="{% url 'accounts:user-profile' request.user.slug%}" style="text-decoration: none;"><li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="{% static 'img/person.svg' %}" alt=""><span style="color: #4F4F4F;">Şəxsi məlumatlar</span></li></a>
+                                <a href="" style="text-decoration: none;"><li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="{% static 'img/pin.svg' %}" alt=""><span style="color: #4F4F4F;">Çatdırılma ünvanı</span></li></a>
+                                <a href="{% url 'accounts:change-password' %}" style="text-decoration: none;"><li style="list-style: none; margin-bottom: 32px;"><img style="margin-right: 16px;" src="{% static 'img/person.svg' %}" alt=""><span style="color: #4F4F4F;">Şifrəni yenilə</span></li></a>
+                                <a href="" style="text-decoration: none;"><li style="list-style: none;"><img style="margin-right: 16px;" src="{% static 'img/log-out.svg' %}" alt=""><span style="color: #4F4F4F;">Çıxış</span></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 profile-cards-cont" style="margin-top: 40px; padding-left: 34px;">
+                    <div class="profile-names-cont">
+                        <h4 class="profile-name-mobile" style="margin-bottom: 16px; color: #4F4F4F;">Profilim</h4>
+                        <h5 style="font-size: 20px; padding-bottom: 32px; color: #4F4F4F; margin-top: 9px;">Favorilərim</h5>
+                    </div>
+                    
+                    
+                   
+                    {% if user.user_wishlist.product.all.count != 0 %}
+                    <div class="row favs-list">
+                        {% for product in user.user_wishlist.product.all %}
+                    <div class="col-md-4" style="height: 386px;">
+                        <div class="card" style="width: 18rem;">
+                          <div class="heart-cont" style="display: flex;
+                          justify-content: end;">
+                            <div style="border: 1px solid #F2F2F2; border-radius: 50%;
+                            height: 40px;
+                            width: 40px;
+                            margin-top: 10px;
+                            margin-right: 10px;">
+                            {% if product in request.user.user_wishlist.product.all %}
+                            <img class="active-heart" src="data:image/png;base64,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" alt="" id="{{product.id}}" style="margin-top: 9px; margin-left: 8px; width: 23px;">
+                            {% else %}
+                              <img src="{% static 'img/heart2.svg' %}" alt="" class="heart-deactive" id="{{product.id}}" style="margin-top: 7px; margin-left: 7px;">
+                            {% endif %}
+                            </div>
+                          </div>
+                        <a href="{% url 'core:product' product.slug %}" style="color: black; text-decoration: none;">
+
+                            <div style="text-align: center;">
+                              {% for image in product.product_image.all|slice:"1" %}
+                              <img class="card-img-top" style="width: 215px;" src="/media/{{image}}" alt="Card image cap">
+                              {% endfor %}
+                        </div>
+                            <div class="card-body">
+                              <h5 class="card-title" style="font-size: 16px;">{{product.brand}} {{product.title}}</h5>
+                              
+                              <p class="card-text">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
+                              
+                            </div>
+                        </a>
+
+                          </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                    {% else %}
+                     <div class="empty-cont">
+                        <div style="background-color: white; text-align: center;height: 371px;">
+                            <img src="{% static 'img/heart-empty.svg' %}" style="margin-top: 103px;" alt="">
+                            <p style="color: #BDBDBD; margin-top: 40px;">Favorilərinizdə hazırda heç bir məhsul yoxdur</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}

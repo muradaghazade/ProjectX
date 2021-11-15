@@ -19,6 +19,9 @@ body {
 .nav-tabs .nav-link:hover {
     border-color: white;
 }
+/* .active-heart {
+    display: none;
+} */
 .nav-link.active {
     border-bottom: 2px solid #00D68F !important;
     color: #00D68F !important;

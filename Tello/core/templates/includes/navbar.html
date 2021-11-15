@@ -1,6 +1,7 @@
 {% load static %}
+<h1 style="display: none;" id="{{request.user.id}}" class="user-id"></h1>
 <nav class="navbar navbar-expand-lg navbar-light pr-5 pt-4 pb-4" style="padding-left: 75px;">
-    <a class="navbar-brand" href="index.html"><h2>Project X</h2></a>
+    <a class="navbar-brand" href="{% url 'core:main' %}"><img src="{% static 'img/Group 5580.jpg' %}" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +24,7 @@
             
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {% if request.user.is_authenticated %}
-                <a class="dropdown-item" href="#">{{request.user}}</a>
+                <a class="dropdown-item" href="{% url 'account:user-profile' user.slug%}">{{request.user}}</a>
                 <a class="dropdown-item" href="{% url 'account:log-out' %}">Sign out</a>
                 {% else %}
                 <a class="dropdown-item" href="login.html">Sign in</a>
@@ -33,10 +34,22 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="{% static 'img/heart.svg' %}" alt=""></a>
+            {% if request.user.is_authenticated %}
+            <a class="nav-link" href="{% url 'accounts:profile-favorites' request.user.slug%}"><img src="{% static 'img/heart.svg' %}" alt=""></a>
+
+                {% else %}
+                <a class="nav-link" href="{% url 'accounts:login' %}"><img src="{% static 'img/heart.svg' %}" alt=""></a>
+
+                {% endif %}
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#"><img src="{% static 'img/cart.svg' %}" alt=""> <span style="color: white; background-color: #2DD06E; border-radius: 50%; padding: 1px 5px; font-size: 14px;">0</span></a>
+            {% if request.user.is_authenticated %}
+            <a class="nav-link" href="{% url 'accounts:cart' request.user.slug%}"><img src="{% static 'img/cart.svg' %}" alt=""> <span style="color: white; background-color: #2DD06E; border-radius: 50%; padding: 1px 5px; font-size: 14px;">{{request.user.user_cart.product.all.count}}</span></a>
+
+                {% else %}
+                <a class="nav-link" href="{% url 'accounts:login' %}"><img src="{% static 'img/cart.svg' %}" alt=""></a>
+
+                {% endif %}
           </li>
       </div>
         </ul>

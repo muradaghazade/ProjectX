@@ -68,6 +68,12 @@
         background-color: #828282 !important;
         color: white;
     }
+    .text-input-product {
+        background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 100%; padding-top: 14px; resize: none; height: 114px;
+    }
+    .input-product {
+        background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 384px; height: 48px;
+    }
         </style>
         {% endblock %}
 
@@ -266,6 +272,7 @@
 
         <div class="container-fluid" id="comment-part" style="margin-bottom: 140px;">
            <div class="comments-div">
+               {% for comment in product.product_comment.all %}
             <div class="container-fluid" style="padding-bottom: 38px; border-bottom: 1px solid #C4C4C4;padding-top: 32px;">
                 <div class="row">
                     <div class="col-md-3" style="text-align: center; border-right: 1px solid #C4C4C4;">
@@ -281,7 +288,7 @@
                     <div class="col-md-9" style="padding-left: 31px;">
                         <div style="display: flex; justify-content: space-between;">
                             <div>
-                                <h6 style="font-size: 20px;">Gunel Mammadova</h6>
+                                <h6 style="font-size: 20px;">{{comment.author_name}} {{comment.author_surname}}</h6>
                                 <p style="font-size: 12px;">Yaddaş - 64, Rəng - Qara</p>
                             </div>
                             <div>
@@ -289,59 +296,36 @@
                             </div>
                         </div>
                         <div>
-                            <p style="color: #4F4F4F;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis viverra lacus ut et, etiam. Vel ut in nunc nunc ut sit nibh tortor sit. Consectetur sit auctor odio quis suspendisse tincidunt quis. Et tristique amet aenean nibh porttitor quis aliquam integer. Consectetur lacus, volutpat malesuada libero. Sollicitudin libero pharetra a.</p>
+                            <p style="color: #4F4F4F;">{{comment.text}}</p>
                         </div>
                         
                     </div>
                 </div>
             </div>
-            <div class="container-fluid" style="padding-top: 32px; border-bottom: 1px solid #C4C4C4; padding-bottom: 38px;">
-                <div class="row">
-                    <div class="col-md-3" style="text-align: center; border-right: 1px solid #C4C4C4;">
-                        <h1>4</h1>
-                        <div class="stars">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star2.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-9" style="padding-left: 31px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <div>
-                                <h6 style="font-size: 20px;">Gunel Mammadova</h6>
-                                <p style="font-size: 12px;">Yaddaş - 64, Rəng - Qara</p>
-                            </div>
-                            <div>
-                                <p style="font-size: 12px;">5 gün əvvəl</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p style="color: #4F4F4F;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis viverra lacus ut et, etiam. Vel ut in nunc nunc ut sit nibh tortor sit. Consectetur sit auctor odio quis suspendisse tincidunt quis. Et tristique amet aenean nibh porttitor quis aliquam integer. Consectetur lacus, volutpat malesuada libero. Sollicitudin libero pharetra a.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+                {% endfor %}
            </div>
 
            <div class="write-comment" style="margin-top: 48px; text-align: center;">
-               <form class="comment-form" action="" style="width: 800px; margin: 0 auto;">
+               <form class="comment-form" novalidate="" action="" enctype="multipart/form-data" method="POST" style="width: 800px; margin: 0 auto;">
+                {% csrf_token %}
+                {{form.non_field_error}}
                    <h6 style="font-size: 20px;margin-bottom: 76px;">Rəy Bildir</h6>
                     <div style="display: flex;" class="form-fullname">
                         <div class="name-cont" style="text-align: start; margin-right: 32px;">
                             <p><label for="name">Ad</label></p>
-                            <input class="name-input" name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 384px; height: 48px;" placeholder="Adınızı daxil edin">
+                            {{form.author_name}}
+                            {{form.author_name.errors}}
                         </div>
                         <div style="text-align: start;">
                             <p><label for="name">Soyad</label></p>
-                            <input class="lastname-input" name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 384px; height: 48px;" placeholder="Soyadınızı daxil edin">
+                            {{form.author_surname}}
+                            {{form.author_surname.errors}}
                         </div>
                     </div>
                     <div style="text-align: start; margin-top: 32px;">
                         <p><label for="name">Rəyinizi yazın</label></p>
-                        <textarea name="name" type="text" style="background-color: #F2F2F2; padding-left: 16px; border: none; border-radius: 8px; width: 100%; padding-top: 14px; resize: none; height: 114px;" placeholder="Rəyinizi buraya yazın"></textarea>
+                        {{form.text}}
+                        {{form.text.errors}}
                     </div>
                     <div style="text-align: end; margin-top: 32px;">
                         <input type="submit" value="Rəyini bildir" style="background-color: #2DD06E; color: white; border-radius: 8px; border: none;width: 174px; height: 44px;">

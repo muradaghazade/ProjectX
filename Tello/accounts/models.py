@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, UnicodeUsernameValidator
-# from .common import slugify
+from core.common import slugify
 from .managers import UserManager
+from core.models import Product
 # from django.core.mail import send_mail
 
 from django.contrib.auth.base_user import BaseUserManager
@@ -25,7 +26,8 @@ class User(AbstractUser):
     email = models.EmailField(('email adress'), unique=True)
     full_name = models.CharField(max_length=100)
     number = models.CharField(max_length=100, null=True, blank=True)
-    # slug = models.SlugField(max_length=255, null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True)
+    birth_date = models.DateTimeField(null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -38,14 +40,15 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.email}"
 
-    # def save(self, *args, **kwargs):
-    #     super(User, self).save(*args, **kwargs)
-    #     self.slug = f'{slugify(self.full_name)}-{self.id}'
-    #     super(User, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+        self.slug = f'{slugify(self.full_name)}-{self.id}'
+        super(User, self).save(*args, **kwargs)
 
 
 class Wishlist(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, db_index=True, related_name='user_wishlist')
+    product = models.ManyToManyField(Product, verbose_name=("Product"), db_index=True, related_name='wishlist_product', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -53,15 +56,22 @@ class Wishlist(models.Model):
         verbose_name = 'Wishlist'
         verbose_name_plural = 'Wishlists'
 
+    def __str__(self):
+        return f"{self.user.email}'s Wishlist"
+
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, db_index=True, related_name='user_cart')
+    product = models.ManyToManyField(Product, verbose_name=("Product"), db_index=True, related_name='cart_product', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Cart'
         verbose_name_plural = 'Carts'
+    
+    def __str__(self):
+        return f"{self.user.email}'s Cart"
 
 class Order(models.Model):
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE, db_index=True, related_name='cart_order')

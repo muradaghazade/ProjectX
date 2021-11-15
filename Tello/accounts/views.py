@@ -1,8 +1,9 @@
+from decimal import Context
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from accounts.forms import RegisterForm, LoginForm
-from django.views.generic import TemplateView, ListView , DetailView , CreateView
-from accounts.models import User
+from django.views.generic import TemplateView, ListView , DetailView , CreateView, UpdateView
+from accounts.models import User, Wishlist, Cart
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -12,7 +13,8 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from .forms import *
 
 def usersignup(request):
     if request.method == 'POST':
@@ -21,6 +23,9 @@ def usersignup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
+
+            wishlist = Wishlist.objects.create(user=user)
+            cart = Cart.objects.create(user=user)
             
 
             current_site = get_current_site(request)
@@ -57,3 +62,38 @@ def activate_account(request, uidb64, token):
 class LoginUserView(LoginView):
     template_name = 'login.html'
     form_class = LoginForm
+
+# class UserProfileView(DetailView):
+#     template_name = 'profile-info.html'
+#     model = User
+#     context_object_name = "user"
+
+class UserProfileView(UpdateView):
+    model = User
+    template_name = 'profile-info.html'
+    form_class = UpdateProfileForm
+    success_url = reverse_lazy('core:index')
+
+    def get_success_url(self):
+        return reverse_lazy('account:user-profile', kwargs={'slug':self.get_object().slug})
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.username != self.get_object().username:
+            raise PermissionDenied
+        return super(UserProfileView, self).dispatch(request, *args, **kwargs)
+
+class UpdatePasswordView(PasswordChangeView):
+    template_name = 'reset-password.html'
+    form_class = ThePasswordChangeForm
+    success_url = reverse_lazy('accounts:login')
+
+
+class UserWishlistView(DetailView):
+    template_name = 'profile-favorites.html'
+    context_object_name = "user"
+    model = User
+
+class UserCartView(DetailView):
+    template_name = 'cart.html'
+    context_object_name = "user"
+    model = User

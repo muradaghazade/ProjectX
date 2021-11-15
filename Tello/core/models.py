@@ -1,5 +1,6 @@
 from django.db import models
 from .common import slugify
+from accounts.models import *
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
@@ -16,11 +17,14 @@ class Product(models.Model):
     battery = models.CharField(max_length=100, null=True, blank=True)
     water_and_dust_rating = models.CharField(max_length=100, null=True, blank=True)
     guarantee = models.CharField(max_length=100, null=True, blank=True)
-    storage = models.ManyToManyField("Storage", verbose_name=("Color"), db_index=True, related_name='storage_product', null=True, blank=True)
+    storage = models.ManyToManyField("Storage", verbose_name=("Storage"), db_index=True, related_name='storage_product', null=True, blank=True)
     category = models.ForeignKey("Category", on_delete=models.CASCADE, db_index=True, related_name='category_product', null=True, blank=True)
     color = models.ManyToManyField('Color',  verbose_name=("Color"), db_index=True, related_name="color_product", null=True, blank=True)
     slug = models.SlugField(max_length=255, null=True, blank=True)
     rating = models.IntegerField('Rating',blank=True,null=False)
+    # wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE, db_index=True, related_name='wishlist_products', null=True, blank=True)
+    # cart = models.ForeignKey(Cart, on_delete=models.CASCADE, db_index=True, related_name='cart_products', null=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

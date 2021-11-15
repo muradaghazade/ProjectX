@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     # local apps
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
@@ -70,6 +71,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.TokenAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser'
+#    ),
+# }
 
 WSGI_APPLICATION = 'Tello.wsgi.application'
 
@@ -147,5 +157,5 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'taskilled@gmail.com'
-EMAIL_HOST_PASSWORD = 'gaehqjqzfbxykujt'
+EMAIL_HOST_USER = 'xomurad41@gmail.com'
+EMAIL_HOST_PASSWORD = 'cekjzfzukpempven'
