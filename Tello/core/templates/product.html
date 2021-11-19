@@ -4,6 +4,58 @@
         <link rel="stylesheet" href="{% static 'css/product.css' %}">
         <link rel="stylesheet" href="{% static 'css/checkboxes.css' %}">
         <style>
+            .qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px
+    ;min-width: 35px;
+    text-align: center;
+}
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    }
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+.minus:hover{
+    background-color: #2DD06E !important;
+}
+.plus:hover{
+    background-color: #2DD06E !important;
+}
+input{  
+    border: 0;
+    width: 2%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:disabled{
+    background-color:white;
+}
             .slick-next,
             .slick-prev {
                 background-color: rgb(209, 202, 202);
@@ -80,6 +132,8 @@
         {% block content %}
 
     <div class="main-product">
+        <h1 id="pk" class="d-none">{{product.pk}}</h1>
+        <h2 id="category" class="d-none">{{product.category}}</h2>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-12 product-first-part" style="padding-left: 79px; padding-top: 26px;">
@@ -145,40 +199,53 @@
                             
                                 <p class="card-text" style="font-size: 18px;">{{product.price}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></p>
                         </div>
+                        <form action="" method="POST" id="product-version-form">
+                            <span id="color-error" style="color: red;"></span>
                         <div class="colors" style="padding-top: 24px;">
                             <div style="display: flex;"> <p style="font-size: 14px; padding-top: 5px; margin-right: 22px;">Rəng: </p>
                                 {% for color in product.color.all %}
-                                <div style="width: 32px; height: 32px; background-color: {{color}}; border-radius: 50%; border: 1px solid #E0E0E0; margin-right: 22px;"></div>
+                                <div style="width: 32px; height: 32px; background-color: {{color}}; border-radius: 50%; border: 1px solid #E0E0E0; margin-right: 22px;">
+                                <input id="{{color}}" style="width: 70px; margin-left: -20px;" class="color-input" type="radio" name="color">
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>
-
+                        <span id="storage-error" style="color: red;"></span>
                         <div class="storage" style="padding-top: 24px; border-bottom: 1px solid #F2F2F2; padding-bottom: 24px;">
                             <div style="display: flex;"> <p style="font-size: 14px; padding-top: 5px; margin-right: 22px;">Yaddaş: </p>
                                 <!-- <div class="storages" style="width: 76px; text-align: center; padding-top: 5px; height: 36px; background-color: #4F4F4F; border-radius: 8px; border: none; margin-right: 22px; color: white;">256GB</div> -->
                                 {% for storage in product.storage.all %}
-                                <div class="storages" style="width: 76px; text-align: center; padding-top: 5px; height: 36px; background-color: #F2F2F2; border-radius: 8px; border: none; margin-right: 22px;">{{storage}}</div>
+                                <div class="storages" style="width: 76px; text-align: center; padding-top: 5px; height: 36px; background-color: #F2F2F2; border-radius: 8px; border: none; margin-right: 22px;">
+                                    <input id="{{storage}}" style="width: 5px; opacity: 0;" class="storage-input" type="radio" name="storage">
+                                    <span class="storage-item">{{storage}}</span>
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>
 
-                        <div class="counter" style="padding-top: 24px; padding-bottom: 56px;">
-                            <div class="counter-elements d-flex">
-                                <div class="counter-plus" style="width: 32px; height: 32px; background-color: #F2F2F2; border-radius: 50%; text-align: center; padding-top: 2px; margin-right: 32px;">
-                                    <img src="{% static 'img/plus 2.svg' %}" alt="">
-                                </div>
-                                <span style="margin-top: 4px;">1</span>
-                                <div class="counter-plus" style="width: 32px; height: 32px; background-color: #F2F2F2; border-radius: 50%; text-align: center; padding-top: 2px; margin-left: 32px;">
-                                    <img src="{% static 'img/plus 2 (1).svg' %}" alt="">
-                                </div>
+                        <div class="counter" style="padding-bottom: 56px;">
+                            <div class="qty mt-5">
+                                <span class="minus bg-dark">-</span>
+                                <input type="number" class="count" name="qty" value="1">
+                                <span class="plus bg-dark">+</span>
                             </div>
                         </div>
 
+                        <!-- <div class="qty mt-5">
+                            <span class="minus bg-dark">-</span>
+                            <input type="number" class="count" name="qty" value="1">
+                            <span class="plus bg-dark">+</span>
+                        </div> -->
+
                         <div class="purchase-buttons d-flex">
-                            <button class="basket-add" style="border: none; border-radius: 8px; width: 197px; height: 48px; background-color: #2DD06E; color: white; margin-right: 28px;"><img src="{% static 'img/white-cart.svg' %}" style="margin-right: 16px; width: 20px; margin-top: -2px;" alt=""> Səbətə at</button>
+                            <div id="submit-div">
+                                <button type="submit" class="basket-add" style="border: none; border-radius: 8px; width: 197px; height: 48px; background-color: #2DD06E; color: white; margin-right: 28px;"><img src="{% static 'img/white-cart.svg' %}" style="margin-right: 16px; width: 20px; margin-top: -2px;" alt=""> Səbətə at</button>
+
+                            </div>
                             <button class="basket-add" style="border: 1px solid #2DD06E; border-radius: 8px; width: 197px; height: 48px; background-color: white; color: #2DD06E;"><img src="{% static 'img/green-heart.svg' %}" style="margin-right: 16px; width: 20px; margin-top: -2px;" alt="">İstək listinə at</button>
                         
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -338,6 +405,22 @@
     {% endblock %}
 
         {% block js %}
+        <script>
+            $(document).ready(function(){
+		    $('.count').prop('disabled', true);
+   			$(document).on('click','.plus',function(){
+				$('.count').val(parseInt($('.count').val()) + 1 );
+    		});
+        	$(document).on('click','.minus',function(){
+    			$('.count').val(parseInt($('.count').val()) - 1 );
+    				if ($('.count').val() == 0) {
+						$('.count').val(1);
+					}
+    	    	});
+ 		});
+        </script>
+<script src="{% static 'js/create-product-version.js' %}"></script>
+<script src="{% static 'js/radio-inputs.js' %}"></script>
 <script src="{% static 'js/product-tabs.js' %}"></script>
 <script src="{% static 'slick/slick.js' %}"></script>
 

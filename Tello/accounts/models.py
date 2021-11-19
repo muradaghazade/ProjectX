@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, UnicodeUsernameValidator
 from core.common import slugify
 from .managers import UserManager
-from core.models import Product
+from core.models import Product, ProductVersion
 # from django.core.mail import send_mail
 
 from django.contrib.auth.base_user import BaseUserManager
@@ -62,7 +62,7 @@ class Wishlist(models.Model):
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, db_index=True, related_name='user_cart')
-    product = models.ManyToManyField(Product, verbose_name=("Product"), db_index=True, related_name='cart_product', null=True, blank=True)
+    product_version = models.ManyToManyField(ProductVersion, verbose_name=("Product Version"), db_index=True, related_name='cart_product', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

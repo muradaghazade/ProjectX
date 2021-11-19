@@ -40,6 +40,18 @@ class Product(models.Model):
         self.slug = f'{slugify(self.title)}-{self.id}'
         super(Product, self).save(*args, **kwargs)
 
+class ProductVersion(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, db_index=True, related_name='product_version', null=False, blank=True)
+    color = models.CharField(max_length=100)
+    storage = models.CharField(max_length=100)
+    quantity = models.IntegerField('Quantity',blank=True,null=False)
+
+    class Meta:
+        verbose_name = 'Product Version'
+        verbose_name_plural = 'Product Versions'
+
+    def __str__(self):
+        return f"{self.product.title}"
 
 class Category(models.Model):
     title = models.CharField('Title',max_length=50, null=True)

@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import UpdateAPIView
 from .serializers import ChangePasswordSerializer
 from rest_framework import status
-from core.models import Product
+from core.models import Product, ProductVersion
 from accounts.models import User
 
 class AddToWishlist(APIView):
@@ -27,3 +27,12 @@ class RemoveFromWishlist(APIView):
         user = User.objects.get(pk=int(user_id))
         user.user_wishlist.product.remove(product)
         return Response("Removed from Wishlist")
+
+class AddToCart(APIView):
+    def post(self, request, *args, **kwargs):
+        product_id = self.request.data.get('product')
+        user_id = self.request.data.get('user')
+        product = ProductVersion.objects.get(pk=int(product_id))
+        user = User.objects.get(pk=int(user_id))
+        user.user_cart.product_version.add(product)
+        return Response("Added to Cart")
