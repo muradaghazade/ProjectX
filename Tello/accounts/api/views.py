@@ -36,3 +36,12 @@ class AddToCart(APIView):
         user = User.objects.get(pk=int(user_id))
         user.user_cart.product_version.add(product)
         return Response("Added to Cart")
+
+class RemoveFromCart(APIView):
+    def post(self, request, *args, **kwargs):
+        product_id = self.request.data.get('product')
+        user_id = self.request.data.get('user')
+        product = ProductVersion.objects.get(pk=int(product_id))
+        user = User.objects.get(pk=int(user_id))
+        user.user_cart.product_version.remove(product)
+        return Response("Removed from Cart")

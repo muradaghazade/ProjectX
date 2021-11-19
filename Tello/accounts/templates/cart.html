@@ -183,7 +183,7 @@ white;
                     <div class="row favs-list">
                         {% for product in user.user_cart.product_version.all %}
                     <div class="col-md-12" style="margin-bottom: 62px;">
-                        <div class="card d-flex">
+                        <div class="card" style="display: flex;">
                           
                             <div class="d-flex" style="padding: 10px;">
                                 {% for image in product.product.product_image.all|slice:"1" %}
@@ -214,7 +214,7 @@ white;
                             height: 40px;
                             width: 40px;
                             margin-right: 10px;">
-                              <img src="{% static 'img/delete.svg' %}" alt="" style="margin-top: 7px; margin-left: 10px;">
+                              <img class="delete-button" itsfor="{{product.pk}}" src="{% static 'img/delete.svg' %}" alt="" style="margin-top: 7px; margin-left: 10px;">
 
                             </div>
                           </div>
@@ -228,7 +228,7 @@ white;
                      <div class="empty-cont">
                         <div style="background-color: white; text-align: center;height: 371px;">
                             <img src="{% static 'img/heart-empty.svg' %}" style="margin-top: 103px;" alt="">
-                            <p style="color: #BDBDBD; margin-top: 40px;">Favorilərinizdə hazırda heç bir məhsul yoxdur</p>
+                            <p style="color: #BDBDBD; margin-top: 40px;">Səbətinizdə hazırda heç bir məhsul yoxdur</p>
                         </div>
                     </div>
                     {% endif %}
@@ -266,4 +266,8 @@ white;
         </div>
 
     </div>
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'js/delete-from-cart.js' %}"></script>
     {% endblock %}
