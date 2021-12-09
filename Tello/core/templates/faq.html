@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/checkboxes.css' %}">
+    <!-- <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css"> -->
+    <style>
+        .slick-next,
+        .slick-prev {
+            background-color: rgb(209, 202, 202);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            z-index: 1;
+        }
+
+        .slick-next:hover,
+        .slick-prev:hover {
+            background-color: rgb(77, 52, 52);
+
+        }
+
+        .slick-next:focus,
+        .slick-prev:focus {
+            background-color: rgb(68, 63, 63);
+
+        }
+
+        .slick-slide {
+            margin: 0 10px;
+        }
+
+        .card-header {
+            background-color: transparent;
+        }
+
+        .btn-link {
+            color: #4F4F4F;
+        }
+
+        .btn-link:hover {
+            color: #4F4F4F;
+            text-decoration: none;
+        }
+        .page-link {
+            margin-left: 32px;
+        }
+        .page-item:first-child .page-link {
+            margin-left: 0;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+        }
+        .page-item:last-child .page-link {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+}
+.num {
+    border: none;
+}
+.card {
+    /* filter: drop-shadow(0px 4px 24px rgba(130, 130, 130, 0.16)); */
+    border: transparent;
+    box-shadow:none !important;
+    background-color: 
+#F1F1F1;
+}
+.card-header {
+    border-bottom: none;
+}
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="faq-main">
+        <div class="product-path-cont" style="padding-left: 75px; padding-top: 26px;">
+            <p class="list-path" style="margin-bottom: 42px;">Ana səhifə <img src="{% static 'img/strelka.svg' %}"
+                style="width: 9px; margin-top: -2px; margin-left: 8px; margin-right: 8px;" alt=""><span style="color: #828282;"> Tez-tez verilən suallar</span></p>
+        </div>
+
+        <div class="container text-center">
+            <h5 style="font-size: 24px; margin-bottom: 48px;">Tez-tez verilən suallar</h5>
+            <div id="accordion" style="text-align: start;">
+                {% for faq in faqs %}
+                <div class="card" style="margin-bottom: 16px; border-radius: 8px;">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" style="text-align: start;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            {{faq.question}}
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body" style="padding-left: 48px;
+    padding-right: 48px;
+    padding-bottom: 32px;">
+                        {{faq.answer}}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+              </div>
+        </div>
+
+    </div>
+{% endblock %}

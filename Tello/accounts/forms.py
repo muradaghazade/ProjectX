@@ -1,7 +1,12 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm,UsernameField
-from .models import User
+from .models import User, Order
 from django.contrib.auth.forms import PasswordChangeForm
+
+PAYMENT_CHOICES = (
+    ("Onlayn kart ilə ödəmə", ("Onlayn kart ilə ödəmə")),
+    ("Qapıda nağd ödəmə", ("Qapıda nağd ödəmə"))
+)
 
 
 class RegisterForm(UserCreationForm):
@@ -87,3 +92,21 @@ class ThePasswordChangeForm(PasswordChangeForm):
                 'placeholder' : 'Yeni şifrənizi yenidən daxil edin',
                 'class' : 'profile-infp-inp',
             }))
+
+class CreateOrderForm(forms.ModelForm):
+    payment_type = forms.ChoiceField(choices=PAYMENT_CHOICES,
+    widget=forms.RadioSelect)
+
+    class Meta:
+        model = Order
+        fields = ['customer_name', 'customer_surname', 'customer_number', 'customer_adress', 'customer_home_number', 'message_for_courier', 'customer_email', 'payment_type']
+
+        widgets = {
+            'customer_name': forms.TextInput(attrs={'id': 'first_name', 'placeholder': 'Adınızı daxil edin',  'class': 'payment-inputs'}),
+            'customer_surname': forms.TextInput(attrs={'id': 'last_name', 'placeholder': 'Soyadınızı daxil edin',  'class': 'payment-inputs'}),
+            'customer_number': forms.TextInput(attrs={'id': 'number', 'placeholder': '000 - 00 - 00',  'class': 'payment-inputs'}),
+            'customer_adress': forms.TextInput(attrs={'id': 'customer_adress', 'placeholder': 'Ünvanı daxil edin',  'class': 'payment-inputs'}),
+            'customer_home_number': forms.TextInput(attrs={'id': 'customer_home_number', 'placeholder': 'Daxil edin',  'class': 'payment-inputs'}),
+            'message_for_courier': forms.Textarea(attrs={'id': 'message_for_courier', 'placeholder': 'Mətni daxil edin...',  'class': 'payment-textarea'}),
+            'customer_email': forms.EmailInput(attrs={'id': 'email', 'placeholder': 'nümunə@gmail.com',  'class': 'payment-inputs'}),
+        }

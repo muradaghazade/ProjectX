@@ -73,11 +73,33 @@ class Cart(models.Model):
     def __str__(self):
         return f"{self.user.email}'s Cart"
 
+    def get_price_summary(self):
+        price = 0
+        for product in self.product_version.all():
+            price += product.product.price
+        return price
+
 class Order(models.Model):
-    cart = models.OneToOneField(Cart, on_delete=models.CASCADE, db_index=True, related_name='cart_order')
+    PAYMENT_CHOICES = (
+    ("Onlayn kart ilə ödəmə", ("Onlayn kart ilə ödəmə")),
+    ("Qapıda nağd ödəmə", ("Qapıda nağd ödəmə"))
+)
+    customer_name = models.CharField(max_length=100)
+    customer_surname = models.CharField(max_length=100)
+    customer_number = models.CharField(max_length=100)
+    customer_adress = models.CharField(max_length=1000)
+    customer_home_number = models.CharField(max_length=50)
+    message_for_courier = models.TextField('Message for courier')
+    payment_type = models.CharField(choices=PAYMENT_CHOICES, max_length=6000)
+    customer_email = models.EmailField(('Email adress'), unique=False)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, db_index=True, related_name='cart_order', null=True, blank=True)
+    final_price = models.IntegerField('Final price',blank=True,null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
+
+    def __str__(self):
+        return f"Sifarişçi: {self.customer_name} {self.customer_surname}  Məbləğ: {self.final_price} AZN"

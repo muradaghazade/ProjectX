@@ -1,9 +1,9 @@
 from decimal import Context
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
-from accounts.forms import RegisterForm, LoginForm
+from accounts.forms import RegisterForm, LoginForm, CreateOrderForm
 from django.views.generic import TemplateView, ListView , DetailView , CreateView, UpdateView
-from accounts.models import User, Wishlist, Cart
+from accounts.models import User, Wishlist, Cart, Order
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -14,6 +14,7 @@ from django.core.mail import EmailMessage
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.views.generic.edit import FormMixin
 from .forms import *
 
 def usersignup(request):
@@ -97,3 +98,28 @@ class UserCartView(DetailView):
     template_name = 'cart.html'
     context_object_name = "user"
     model = User
+
+class CreateOrderView(FormMixin, DetailView):
+    template_name = 'payment-process.html'
+    model = User
+    context_object_name = "user"
+    form_class = CreateOrderForm
+    success_url = reverse_lazy('accounts:success')
+
+    def post(self,request, *args, **kwargs):
+        form = self.get_form()
+        if request.method == 'POST':
+            if request.user.is_authenticated:
+                if form.is_valid():
+                    return self.form_valid(form)
+
+    def form_valid(self, form):
+        form.instance.cart = self.request.user.user_cart
+        form.instance.final_price = self.request.user.user_cart.get_price_summary()
+        form.save()
+        for product in self.request.user.user_cart.product_version.all():
+            self.request.user.user_cart.product_version.remove(product)
+        return super().form_valid(form)
+
+class SuccessPageView(TemplateView):
+    template_name = 'success.html'

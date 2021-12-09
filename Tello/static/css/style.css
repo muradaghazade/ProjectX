@@ -18,6 +18,7 @@ body {
 }
 .nav-tabs .nav-link:hover {
     border-color: white;
+    border-bottom: 1px solid #2CE59B !important;
 }
 /* .active-heart {
     display: none;

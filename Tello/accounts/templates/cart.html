@@ -74,6 +74,7 @@
 .card {
     filter: drop-shadow(0px 2px 16px rgba(130, 130, 130, 0.07));
     border: transparent;
+    border-radius: 8px;
     box-shadow:none !important;
     background-color: 
 white;
@@ -182,7 +183,7 @@ white;
                     {% if user.user_cart.product_version.all.count != 0 %}
                     <div class="row favs-list">
                         {% for product in user.user_cart.product_version.all %}
-                    <div class="col-md-12" style="margin-bottom: 62px;">
+                    <div class="col-md-12" style="margin-bottom: 40px;">
                         <div class="card" style="display: flex;">
                           
                             <div class="d-flex" style="padding: 10px;">
@@ -199,7 +200,7 @@ white;
                                         </div>
                                                                                 
                                         <div style="margin-left: 100px; margin-top: 15px;">
-                                            {{product.product.price}}<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
+                                            {{product.get_final_price}}<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
                                         </div>
                                         <div style="margin-left: 70px; margin-top: 15px; color: #2DD06E;">
                                             {{product.quantity}} ədəd
@@ -235,30 +236,25 @@ white;
                     
                 </div>
                 <div class="col-md-4" style="margin-top: 106px;">
-                    <div class="card payment-card" style="height: 309px; width: 344px; padding: 32px; margin: 0 auto;">
+                    <div class="card payment-card" style="width: 344px; padding: 32px; margin: 0 auto;">
                         <div style="border-bottom: 1px solid #828282;">
                             <h6 style="font-size: 20px; margin-bottom: 16px;">Ümumi</h6>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
                                 <span style="font-size: 16px;">Məbləğ</span>
-                                <span style="font-size: 16px;">66.50 $</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-                                <span style="font-size: 16px;">Çatdırılma</span>
-                                <span style="font-size: 16px;">66.50 $</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-                                <span style="font-size: 16px;">Hədiyyə paketi</span>
-                                <span style="font-size: 16px;">66.50 $</span>
+                                <span style="font-size: 16px;">{{user.user_cart.get_price_summary}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></span>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
                                 <span style="font-size: 16px;">Promo kod</span>
-                                <span style="font-size: 16px;">66.50 $</span>
+                                <span style="font-size: 16px;">-0.00 <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></span>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-top: 16px;">
                             <span style="font-size: 16px;">Cəmi</span>
-                            <span style="font-size: 16px;">66.50 $</span>
+                            <span style="font-size: 16px;">{{user.user_cart.get_price_summary}} <img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""></span>
                         </div>
+
+                        <a href="{% url 'accounts:create-order' user.slug%}"><input type="submit" value="Məhsullari əldə et" style="margin-top: 22px; background-color: #2DD06E; border: none; border-radius: 8px; padding: 16px 80px; color: white;"></a>
+                       
                        
                     </div>
                 </div>

@@ -53,6 +53,11 @@ class ProductVersion(models.Model):
     def __str__(self):
         return f"{self.product.title}"
 
+    def get_final_price(self):
+        quantity = int(self.quantity)
+        price = int(self.product.price)
+        return quantity*price
+
 class Category(models.Model):
     title = models.CharField('Title',max_length=50, null=True)
 
@@ -132,3 +137,15 @@ class Image(models.Model):
 
     def __str__(self):
         return f"{self.image}" 
+
+
+class FAQ(models.Model):
+    question = models.TextField('Question')
+    answer = models.TextField('Answer')
+
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+
+    def __str__(self):
+        return f"{self.question}" 

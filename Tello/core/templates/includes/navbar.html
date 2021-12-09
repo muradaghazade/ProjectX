@@ -1,7 +1,7 @@
 {% load static %}
 <h1 style="display: none;" id="{{request.user.id}}" class="user-id"></h1>
-<nav class="navbar navbar-expand-lg navbar-light pr-5 pt-4 pb-4" style="padding-left: 75px;">
-    <a class="navbar-brand" href="{% url 'core:main' %}"><img src="{% static 'img/Group 5580.jpg' %}" alt=""></a>
+<nav class="navbar navbar-expand-lg navbar-light pr-5 pt-4 pb-3" style="padding-left: 75px;">
+    <a class="navbar-brand" href="{% url 'core:main' %}"><img style="width: 140px;" src="{% static 'img/Artboard 1 copy 9@2x.svg' %}" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,8 @@
     
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mt-2 mt-lg-0" style="margin: 0 auto;">
-          <form class="form-inline my-2 my-lg-0 nav-form" style="margin-left: 100px;">
-              <input class="form-control mr-sm-2 nav-inp" type="search" style="width: 591px; height: 40px; background-color: #F7F9FC; border-radius: 7px;" placeholder="Axtaris..." aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 nav-form" style="margin-left: 100px;" action="{% url 'core:products' %}">
+              <input class="form-control mr-sm-2 nav-inp" name="title" style="width: 591px; height: 40px; background-color: #F7F9FC; border-radius: 7px;" placeholder="Axtaris..." aria-label="Search" value="{{request.GET.title}}">
               <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
             </form>
             <div style="display: flex; margin-left: 113px;" class="nav-iconss">
@@ -58,25 +58,50 @@
     </nav>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Yeni</a>
+        <a class="nav-link" href="{% url 'core:products' %}" style="color: black;">Yeni</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black;" href="list.html">Apple</a>
+        {% if request.GET.brand == 'Apple'%}
+        <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?brand=Apple">Apple</a>
+        {% else %}
+        <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?brand=Apple">Apple</a>
+        {% endif %}
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black;" href="list.html">Samsung</a>
+        {% if request.GET.brand == 'Samsung'%}
+        <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?brand=Samsung">Samsung</a>
+        {% else %}
+        <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?brand=Samsung">Samsung</a>
+        {% endif %}
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black;" href="#">Xiaomi</a>
+        {% if request.GET.brand == 'Xiaomi'%}
+        <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?brand=Xiaomi">Xiaomi</a>
+        {% else %}
+        <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?brand=Xiaomi">Xiaomi</a>
+        {% endif %}
       </li>
       <li class="nav-item">
-          <a class="nav-link" style="color:black;" href="#">Redmi</a>
+        {% if request.GET.brand == 'Redmi'%}
+          <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?brand=Redmi">Redmi</a>
+        {% else %}
+        <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?brand=Redmi">Redmi</a>
+        {% endif %}
+
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color:black;" href="#">Butun brendler</a>
+          {% if request.GET.brand == 'all'%}
+          <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?brand=all">Butun brendler</a>
+          {% else %}
+          <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?brand=all">Butun brendler</a>
+          {% endif %}
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color:black;" href="#">Aksessuarlar</a>
+          {% if request.GET.category == 'Accessories'%}
+          <a class="nav-link" style="color:#2DD06E;" href="{% url 'core:products' %}?category=Accessories">Aksessuarlar</a>
+          {% else %}
+          <a class="nav-link" style="color:black;" href="{% url 'core:products' %}?category=Accessories">Aksessuarlar</a>
+          {% endif %}
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color:black;" href="#">Endirimler</a>

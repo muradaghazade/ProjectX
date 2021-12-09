@@ -72,9 +72,9 @@
                            <img src="{% static 'img/swap.svg' %}" style="width: 24px;" alt=""> Ən yenilər
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="?title=news">Ən yenilər</a>
+                                <a class="dropdown-item" href="?title=cheap">Əvvəlcə ucuz</a>
+                                <a class="dropdown-item" href="?title=expensive">Əvvəlcə bahalı</a>
                         </div>
                     </div>
                     <div class="dropdown" style="width: 100%;">
@@ -83,9 +83,9 @@
                            <img src="{% static 'img/filter.svg' %}" style="width: 20px;" alt=""> Filterlər
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="?title=news">Ən yenilər</a>
+                                <a class="dropdown-item" href="?title=cheap">Əvvəlcə ucuz</a>
+                                <a class="dropdown-item" href="?title=expensive">Əvvəlcə bahalı</a>
                         </div>
                     </div>
                 </div>
@@ -96,13 +96,14 @@
                             style="width: 9px; margin-top: -2px; margin-left: 8px; margin-right: 8px;" alt=""><span
                             style="color: #828282;">Apple</span></p>
                     <div id="accordion" style="width: 305px;">
+                        
                         <div class="">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseOne"
                                         aria-expanded="true" aria-controls="collapseOne">
-                                        Brend (4)
-                                    </button>
+                                        Brend
+                                    </span>
                                 </h5>
                             </div>
 
@@ -110,29 +111,58 @@
                                 data-parent="#accordion">
                                 <div class="card-body">
                                     <ul>
+                                        
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.brand == 'Apple'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Apple
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?brand=Apple" style="color: black;"><span class="container">Apple
+                                                    
+                                                </span>
+                                                {% endif %}
+                                            </li>
+                                        <li style="list-style: none;">
+                                            {% if request.GET.brand == 'Samsung'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Samsung
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?brand=Samsung" style="color: black;"><span class="container">Samsung
+                                                    
+                                                </span>
+                                                {% endif %}
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.brand == 'Xiaomi'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Xiaomi
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?brand=Xiaomi" style="color: black;"><span class="container">Xiaomi
+                                                    
+                                                </span>
+                                                {% endif %}
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.brand == 'Redmi'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Redmi
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?brand=Redmi" style="color: black;"><span class="container">Redmi
+                                                    
+                                                </span></a>
+                                                {% endif %}
                                         </li>
                                     </ul>
                                 </div>
@@ -141,10 +171,10 @@
                         <div class="">
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    <span class="btn collapsed" data-toggle="collapse"
                                         data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Type
-                                    </button>
+                                        Form Factor
+                                    </span>
                                 </h5>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
@@ -152,27 +182,37 @@
                                 <div class="card-body">
                                     <ul>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
+                                            {% if request.GET.form_factor == 'Smartphone'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Smartphone
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?form_factor=Smartphone" style="color: black;"><span class="container">Smartphone
+                                                    
+                                                </span>
+                                                {% endif %}
+                                        </li>
+                                        <li style="list-style: none;">
+                                            {% if request.GET.form_factor == 'Headphones'%}
+                                            <span><a href="/products"><span class="container" style="color: #2DD06E;">Headphones
+                                                    
+                                            </span>
+                                        </a>
+                                                </span>
+                                                {% else %}
+                                                <span><a href="?form_factor=Headphones" style="color: black;"><span class="container">Headphones
+                                                    
+                                                </span></a>
+                                                {% endif %}
+                                        </li>
+                                        <li style="list-style: none;">
+                                            <span><label class="container">Phone case
                                                 </label>
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
+                                            <span><label class="container">Charger
                                                 </label>
                                         </li>
                                     </ul>
@@ -182,41 +222,29 @@
                         <div class="">
                             <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    <span class="btn collapsed" data-toggle="collapse"
                                         data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
                                         Category
-                                    </button>
+                                    </span>
                                 </h5>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                 data-parent="#accordion">
                                 <div class="card-body">
                                     <ul>
+                                        {% for category in categories %}
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.category == category.title %}
+                                           <a href="/products" style="color: #2DD06E;"><span><label class="container">{{category.title}}
+                                                </label></span></a>
+                                            {% else %}
+                                            <a href="?category={{category}}" style="color: black;"><span><label class="container">{{category.title}}
+                                            </label></span></a>
+                                            {% endif %}
+
                                         </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -224,10 +252,10 @@
                         <div class="">
                             <div class="card-header" id="headingFour">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    <span class="btn collapsed" data-toggle="collapse"
                                         data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Rəng
-                                    </button>
+                                        Qiymət
+                                    </span>
                                 </h5>
                             </div>
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
@@ -235,69 +263,40 @@
                                 <div class="card-body">
                                     <ul>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.price == '0-500' %}
+                                            <a style="color: #2DD06E;" href="/products"><span><label class="container">0 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt=""> - 500 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt="">
+                                                </label></span></a>
+                                            {% else %}
+                                            <a style="color: black;" href="?price=0-500"><span><label class="container">0<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""> - 500<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
+                                            </label></span></a>
+                                            {% endif %}
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.price == '500-1000' %}
+                                            <a style="color: #2DD06E;" href="/products"><span><label class="container">500 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt=""> - 1000 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt="">
+                                                </label></span></a>
+                                            {% else %}
+                                            <a style="color: black;" href="?price=500-1000"><span><label class="container">500<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""> - 1000<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
+                                            </label></span></a>
+                                            {% endif %}
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.price == '1000-2000' %}
+                                            <a style="color: #2DD06E;" href="/products"><span><label class="container">1000 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt=""> - 2000 <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt="">
+                                                </label></span></a>
+                                            {% else %}
+                                            <a style="color: black;" href="?price=1000-2000"><span><label class="container">1000<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt=""> - 2000<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
+                                            </label></span></a>
+                                            {% endif %}
                                         </li>
                                         <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-header" id="headingFive">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        Qiymət
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    <ul>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                        </li>
-                                        <li style="list-style: none;">
-                                            <span><label class="container">Two
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            {% if request.GET.price == '2000' %}
+                                            <a style="color: #2DD06E;" href="/products"><span><label class="container">2000 və yuxarı <img style="margin-top: -5px;" src="{% static 'img/azn symbol.svg' %}" alt="">
+                                                </label></span></a>
+                                            {% else %}
+                                            <a style="color: black;" href="?price=2000"><span><label class="container">2000 və yuxarı<img style="margin-top: -5px;" src="{% static 'img/azn.svg' %}" alt="">
+                                            </label></span></a>
+                                            {% endif %}
                                         </li>
                                     </ul>
                                 </div>
@@ -318,16 +317,16 @@
                                 Ən yenilər
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="?title=news">Ən yenilər</a>
+                                <a class="dropdown-item" href="?title=cheap">Əvvəlcə ucuz</a>
+                                <a class="dropdown-item" href="?title=expensive">Əvvəlcə bahalı</a>
                             </div>
                         </div>
                     </div>
                     <div class="row list-row" style="padding: 65px; padding-top: 42px; margin-bottom: 72px;">
                         {% for product in products %}
-                    <div class="col-md-3" style="height: 386px;">
-                        <div class="card" style="width: 18rem;">
+                    <div class="col-md-4 mb-4" style="height: 386px;">
+                        <div class="card" style="width: 18rem; height: 386px">
                           <div class="heart-cont" style="display: flex;
                           justify-content: end;">
                             <div style="border: 1px solid #F2F2F2; border-radius: 50%;
@@ -346,7 +345,7 @@
 
                             <div style="text-align: center;">
                               {% for image in product.product_image.all|slice:"1" %}
-                              <img class="card-img-top" style="width: 215px;" src="media/{{image}}" alt="Card image cap">
+                              <img class="card-img-top" style="width: 215px;" src="/media/{{image}}" alt="Card image cap">
                               {% endfor %}
                         </div>
                             <div class="card-body">
@@ -366,17 +365,24 @@
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                               <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                {% if page_obj.has_previous %}
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
                                   <img src="{% static 'img/pag1.svg' %}" alt="" style="margin-top: -6px;">
                                 </a>
+                                {% endif %}
                               </li>
-                              <li class="page-item"><a class="page-link num" href="#" style="font-size: 20px; color: #4F4F4F;">1</a></li>
-                              <li class="page-item"><a class="page-link num" href="#" style="font-size: 20px; color: #4F4F4F;">2</a></li>
-                              <li class="page-item"><a class="page-link num" href="#" style="font-size: 20px; color: #4F4F4F;">3</a></li>
+                              <h1 class="d-none" id="num_pages">{{ page_obj.paginator.num_pages }}</h1>
+                              <li class="page-item"><a class="page-link num" href="?page={{ page_obj.number }}" style="font-size: 20px; color: #4F4F4F;">{{ page_obj.number }}</a></li>
+                              {% if page_obj.has_next %}
+                              <li class="page-item"><a class="page-link num" id="from-pagination" href="?page={{ page_obj.next_page_number }}" style="font-size: 20px; color: #4F4F4F;">{{ page_obj.next_page_number }}</a></li>
+                              <li class="page-item"><a class="page-link num" id="last-pagination" href="" style="font-size: 20px; color: #4F4F4F;">3</a></li>
                               <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
                                   <img src="{% static 'img/pag2.svg' %}" alt="" style="margin-top: -6px;">
                                 </a>
+                                {% endif %}
                               </li>
                             </ul>
                           </nav>
@@ -392,4 +398,12 @@
 
     {% block js %}
     <script src="{% static 'js/filter-button.js' %}"></script>
+    <script src="{% static 'js/paginator.js' %}"></script>
+    <script>
+        document.querySelectorAll('.filter-radios').forEach(e => {
+            e.addEventListener('click', () => {
+                document.getElementById('filter-formm').submit()
+            })
+        })
+    </script>
     {% endblock %}
