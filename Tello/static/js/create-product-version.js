@@ -1,5 +1,5 @@
 let productVersioonURL = '/api/v1/core/create-product-version/'
-let addToCartUrl2 = 'http://127.0.0.1:8000/api/v1/add-to-cart/'
+let addToCartUrl2 = '/api/v1/add-to-cart/'
 let color;
 let storage;
 let quantity;
